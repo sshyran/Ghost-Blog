@@ -6,10 +6,10 @@
         <article>
         {{#post}}
 
-            {{! If post is featured and has an image, make a big hero banner }}
-            {{#if image}}{{#if featured}}
+            {{! If post is featured and has an feature image, make a big hero banner }}
+            {{#if feature_image}}{{#if featured}}
             <div class="hero">
-                <div class="hero-image" style="background-image: url({{image}});"></div>
+                <div class="hero-image" style="background-image: url({{img_url feature_image}});"></div>
             </div>
             {{/if}}{{/if}}
 
@@ -17,7 +17,7 @@
 
             <h1 class="post-title">{{{title}}}</h1>
             <section class="post-meta">
-                <img class="author-img" src="{{author.image}}" alt="Author image" nopin="nopin" />
+                <img class="author-img" src="{{author.profile_image}}" alt="Author image" nopin="nopin" />
                 <span class="author-name">{{author}}</span>
                 on the
                 <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="Do of MMMM YYYY"}}</time>
@@ -25,7 +25,7 @@
             </section>
 
             <section class="post-content">
-                {{#if image}}{{#unless featured}}<img src="{{image}}" alt="Post image" />{{/unless}}{{/if}}
+                {{#if feature_image}}{{#unless featured}}<img src="{{img_url feature_image}}" alt="Post image" />{{/unless}}{{/if}}
                 {{content}}
             </section>
 
@@ -33,7 +33,7 @@
 
                 <section class="author">
                     <div class="author-img">
-                        <img class="author-img" src="{{author.image}}" alt="Author image" nopin="nopin" />
+                        <img class="author-img" src="{{author.profile_image}}" alt="Author image" nopin="nopin" />
                     </div>
                     <div class="author-meta">
                         <h4>{{author.name}}</h4>
@@ -43,7 +43,7 @@
 
                 {{#next_post}}
                 <section class="read-next">
-                    <a class="read-next-story {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}" href="{{url}}">
+                    <a class="read-next-story {{#if feature_image}}" style="background-image: url({{img_url feature_image}}){{else}}no-cover{{/if}}" href="{{url}}">
                         <section class="post">
                             <h2>{{title}}</h2>
                             <p>{{excerpt words="19"}}&hellip;</p>

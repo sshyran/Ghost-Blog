@@ -1,4 +1,14 @@
 {
   "name": "blog",
-  "version": "1.0.0"
+  "version": "2.0.0",
+  "author": {
+      "email": "hello@ghost.org"
+  },
+  "config": {
+      "posts_per_page": 6
+  },
+  "engines": {
+      "ghost": ">=1.0.0"
+  },
+  "license": "MIT"
 }
