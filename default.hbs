@@ -1,130 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{! Document Settings }}
+
+    {{!-- Document Settings --}}
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    {{! Page Meta }}
+    {{!-- Base Meta --}}
     <title>{{meta_title}}</title>
-
     <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset "images/favicon.ico"}}" />
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
-    {{! Styles'n'Scripts }}
-    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6076934/6684552/css/fonts.css"/>
-    {{!-- TODO: use this from ghost.org when available --}}
-    {{!-- <link href="https://ghost.org/public/app.css" media="all" rel="stylesheet"> --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/app.css"}}" />
+    {{!-- Ghost header styles --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "built/ghost-header.css"}}" />
 
-    {{!-- Font for global header and footer --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
-
-    <meta property="twitter:domain" content="Ghost.org" />
-    <meta property="og:site_name" content="Ghost" />
-    <meta property="fb:admins" content="511697361" />
-
+    {{!-- This tag outputes SEO meta+structured data and other important settings --}}
     {{ghost_head}}
+
 </head>
 <body class="{{body_class}}">
-    <div id="fb-root"></div>
-    <header class="gh-head">
-        <nav class="gh-navbar inner">
-            <div class="gh-navbar-left">
-              <a class="gh-nav-logo gh-navbar-item" href="https://blog.ghost.org"><svg class="ghost-svg" viewBox="0 0 493 161" xmlns="http://www.w3.org/2000/svg"><title>Ghost Logo</title><g fill="none" fill-rule="evenodd"><path d="M328.52 37.36c-27.017 0-40.97 19.323-40.97 43.16 0 23.837 13.61 43.162 40.97 43.162s40.968-19.325 40.968-43.163c0-23.84-13.954-43.16-40.97-43.16zm20.438 43.237c-.02 15.328-5.126 27.743-20.44 27.743-15.312 0-20.42-12.414-20.435-27.743v-.078c.016-15.33 5.124-27.74 20.437-27.74 15.312 0 20.42 12.41 20.438 27.74v.07zM207.553 5.19c0-1.103.885-2.124 1.984-2.282 0 0 13.577-1.95 14.784-2.115 1.37-.187 3.19.798 3.19 2.744v44.236c3.23-3.105 6.79-5.608 10.66-7.515 3.88-1.906 8.43-2.86 13.66-2.86 4.53 0 8.53.776 12.03 2.33 3.5 1.55 6.43 3.73 8.77 6.533 2.34 2.81 4.12 6.16 5.33 10.05 1.21 3.9 1.82 8.19 1.82 12.87v51.35c0 1.1-.89 2-2 2h-15.95c-1.1 0-2-.9-2-1.99V69.18c0-5.118-1.17-9.08-3.51-11.888-2.35-2.804-5.86-4.207-10.544-4.207-3.45 0-6.677.79-9.69 2.37-3.02 1.58-5.87 3.73-8.564 6.46v58.617c0 1.102-.894 2-2.002 2h-15.94c-1.11 0-2.005-.895-2.005-2V5.188zm244.007 95.327v-43.68h-13.482c-1.1 0-1.742-.87-1.443-1.916l3-10.49c.262-.9.942-1.87 2.308-2.07l9.597-1.35 3.508-23.49c.163-1.09 1.18-2.1 2.274-2.26 0 0 9.192-1.31 10.963-1.58 1.673-.25 3.19.97 3.19 2.81v24.52h17.565c1.106 0 2.002.9 2.002 2.01v11.82c0 1.11-.89 2.01-2.002 2.01h-17.566v43.08c0 6.02 3.623 8.32 7.095 8.32 2.12 0 5.02-1.14 7.19-2.16 1.34-.62 3.41-.16 3.95 1.73l2.45 8.65c.3 1.07-.25 2.37-1.23 2.86 0 0-7.29 4.37-17.06 4.37-13.73 0-22.33-8.08-22.33-23.16zm-44.584-47.74c-7.084 0-12.657 2.476-12.657 8.433 0 7.44 12.01 9.606 20.23 12.64 5.49 2.027 20.24 5.98 20.24 22.016 0 19.48-16 27.807-33.06 27.807-17.06 0-25.4-5.465-25.4-5.465-.96-.527-1.5-1.822-1.2-2.89 0 0 2.1-7.52 2.64-9.386.48-1.68 2.41-2.27 3.64-1.792 4.39 1.712 12.32 4.092 21.28 4.092 9.07 0 13.46-2.803 13.46-8.777 0-7.95-12.26-10.38-20.36-12.967-5.59-1.78-20.36-5.93-20.36-23.566 0-17.373 15.08-25.524 31.2-25.524 13.64 0 23.5 4.69 23.5 4.69 1.01.427 1.58 1.635 1.28 2.698l-2.658 9.357c-.488 1.74-1.898 2.537-3.666 1.957-3.89-1.277-11.2-3.322-18.15-3.322zm-210.313-15.28c-6.695.775-11.472 3.962-14.562 6.93-6.06-4.81-14.49-7.106-23.94-7.106-18.95 0-33.76 9.26-33.76 29.43 0 11.58 4.88 19.56 12.62 24.26-5.75 2.75-9.57 8.59-9.57 14.34 0 9.61 7.5 12.61 7.5 12.61s-13.11 6.44-13.11 19.32c0 16.49 15.01 23.16 33.34 23.16 26.43 0 44.61-11.04 44.61-31.31 0-12.47-9.44-19.36-30.01-20.18-12.2-.48-20.11-.93-22.07-1.58-2.59-.87-3.86-2.96-3.86-5.28 0-2.55 2.08-4.98 5.35-6.65 2.86.516 5.87.768 8.99.768 18.97 0 33.76-9.223 33.76-29.425 0-4.897-.87-9.15-2.46-12.78 2.79-1.506 8.34-2.25 8.34-2.25 1.09-.17 1.975-1.21 1.974-2.31V40.3c0-1.88-1.59-2.955-3.1-2.78zm-49.13 85.132s9.954.38 19.9.84c11.172.52 14.654 2.96 14.654 8.81 0 7.15-9.71 14.1-23.28 14.1-12.88 0-19.314-4.54-19.314-12.08 0-4.33 2.26-9.18 8.04-11.69zm10.66-40.54c-8.978 0-15.983-4.83-15.983-15.35 0-10.53 7.01-15.35 15.983-15.35 8.974 0 15.984 4.81 15.984 15.34 0 10.53-7.002 15.34-15.984 15.34z" fill="#2D3134"/><g opacity=".6" transform="translate(0 36)" fill="#2E3134"><rect x=".209" y="69.017" width="33.643" height="17.014" rx="4"/><rect x="50.672" y="69.017" width="33.622" height="17.014" rx="4"/><rect x=".184" y="34.99" width="84.121" height="17.014" rx="4"/><rect x=".209" y=".964" width="50.469" height="17.013" rx="4"/><rect x="67.494" y=".964" width="16.821" height="17.013" rx="4"/></g></g></svg>
-     <div class="gh-nav-logo-suffix">Blog</div></a>
+    {{> "ghost-header"}}
 
+    <div class="site-wrapper">
+
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+
+        {{!-- The footer at the very bottom of the screen --}}
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+                <nav class="site-footer-nav">
+                    <a href="{{@blog.url}}">Latest Posts</a>
+                    {{#if @blog.facebook}}<a href="{{facebook_url @blog.facebook}}" target="_blank">Facebook</a>{{/if}}
+                    {{#if @blog.twitter}}<a href="{{twitter_url @blog.twitter}}" target="_blank">Twitter</a>{{/if}}
+                    <a href="https://ghost.org" target="_blank">Ghost</a>
+                </nav>
             </div>
-            <div class="gh-navbar-right">
-              <a class="gh-navbar-item" href="https://blog.ghost.org/">Product</a>
-              <a class="gh-navbar-item" href="http://dev.ghost.org">Dev</a>
-              <a class="gh-navbar-btn gh-btn" href="https://ghost.org" id="signin-button"><span>Back to Ghost</span></a>
-            </div>
-        </nav>
-    </header>
+        </footer>
 
-    <header class="gh-mobilehead">
-        <nav class="gh-mobilenavbar">
-            <a class="gh-nav-burger" href="#">
-                <div class="hamburger hamburger--collapse"
-         aria-label="Menu" role="button" aria-controls="navigation">
-                    <div class="hamburger-box"><div class="hamburger-inner"></div></div>
-                </div>
-            </a>
-            <a class="gh-nav-logo" href="/">
-
-          	<svg class="ghost-svg" viewBox="0 0 493 161" xmlns="http://www.w3.org/2000/svg"><title>Ghost Logo</title><g fill="none" fill-rule="evenodd"><path d="M328.52 37.36c-27.017 0-40.97 19.323-40.97 43.16 0 23.837 13.61 43.162 40.97 43.162s40.968-19.325 40.968-43.163c0-23.84-13.954-43.16-40.97-43.16zm20.438 43.237c-.02 15.328-5.126 27.743-20.44 27.743-15.312 0-20.42-12.414-20.435-27.743v-.078c.016-15.33 5.124-27.74 20.437-27.74 15.312 0 20.42 12.41 20.438 27.74v.07zM207.553 5.19c0-1.103.885-2.124 1.984-2.282 0 0 13.577-1.95 14.784-2.115 1.37-.187 3.19.798 3.19 2.744v44.236c3.23-3.105 6.79-5.608 10.66-7.515 3.88-1.906 8.43-2.86 13.66-2.86 4.53 0 8.53.776 12.03 2.33 3.5 1.55 6.43 3.73 8.77 6.533 2.34 2.81 4.12 6.16 5.33 10.05 1.21 3.9 1.82 8.19 1.82 12.87v51.35c0 1.1-.89 2-2 2h-15.95c-1.1 0-2-.9-2-1.99V69.18c0-5.118-1.17-9.08-3.51-11.888-2.35-2.804-5.86-4.207-10.544-4.207-3.45 0-6.677.79-9.69 2.37-3.02 1.58-5.87 3.73-8.564 6.46v58.617c0 1.102-.894 2-2.002 2h-15.94c-1.11 0-2.005-.895-2.005-2V5.188zm244.007 95.327v-43.68h-13.482c-1.1 0-1.742-.87-1.443-1.916l3-10.49c.262-.9.942-1.87 2.308-2.07l9.597-1.35 3.508-23.49c.163-1.09 1.18-2.1 2.274-2.26 0 0 9.192-1.31 10.963-1.58 1.673-.25 3.19.97 3.19 2.81v24.52h17.565c1.106 0 2.002.9 2.002 2.01v11.82c0 1.11-.89 2.01-2.002 2.01h-17.566v43.08c0 6.02 3.623 8.32 7.095 8.32 2.12 0 5.02-1.14 7.19-2.16 1.34-.62 3.41-.16 3.95 1.73l2.45 8.65c.3 1.07-.25 2.37-1.23 2.86 0 0-7.29 4.37-17.06 4.37-13.73 0-22.33-8.08-22.33-23.16zm-44.584-47.74c-7.084 0-12.657 2.476-12.657 8.433 0 7.44 12.01 9.606 20.23 12.64 5.49 2.027 20.24 5.98 20.24 22.016 0 19.48-16 27.807-33.06 27.807-17.06 0-25.4-5.465-25.4-5.465-.96-.527-1.5-1.822-1.2-2.89 0 0 2.1-7.52 2.64-9.386.48-1.68 2.41-2.27 3.64-1.792 4.39 1.712 12.32 4.092 21.28 4.092 9.07 0 13.46-2.803 13.46-8.777 0-7.95-12.26-10.38-20.36-12.967-5.59-1.78-20.36-5.93-20.36-23.566 0-17.373 15.08-25.524 31.2-25.524 13.64 0 23.5 4.69 23.5 4.69 1.01.427 1.58 1.635 1.28 2.698l-2.658 9.357c-.488 1.74-1.898 2.537-3.666 1.957-3.89-1.277-11.2-3.322-18.15-3.322zm-210.313-15.28c-6.695.775-11.472 3.962-14.562 6.93-6.06-4.81-14.49-7.106-23.94-7.106-18.95 0-33.76 9.26-33.76 29.43 0 11.58 4.88 19.56 12.62 24.26-5.75 2.75-9.57 8.59-9.57 14.34 0 9.61 7.5 12.61 7.5 12.61s-13.11 6.44-13.11 19.32c0 16.49 15.01 23.16 33.34 23.16 26.43 0 44.61-11.04 44.61-31.31 0-12.47-9.44-19.36-30.01-20.18-12.2-.48-20.11-.93-22.07-1.58-2.59-.87-3.86-2.96-3.86-5.28 0-2.55 2.08-4.98 5.35-6.65 2.86.516 5.87.768 8.99.768 18.97 0 33.76-9.223 33.76-29.425 0-4.897-.87-9.15-2.46-12.78 2.79-1.506 8.34-2.25 8.34-2.25 1.09-.17 1.975-1.21 1.974-2.31V40.3c0-1.88-1.59-2.955-3.1-2.78zm-49.13 85.132s9.954.38 19.9.84c11.172.52 14.654 2.96 14.654 8.81 0 7.15-9.71 14.1-23.28 14.1-12.88 0-19.314-4.54-19.314-12.08 0-4.33 2.26-9.18 8.04-11.69zm10.66-40.54c-8.978 0-15.983-4.83-15.983-15.35 0-10.53 7.01-15.35 15.983-15.35 8.974 0 15.984 4.81 15.984 15.34 0 10.53-7.002 15.34-15.984 15.34z" fill="#2D3134"/><g opacity=".6" transform="translate(0 36)" fill="#2E3134"><rect x=".209" y="69.017" width="33.643" height="17.014" rx="4"/><rect x="50.672" y="69.017" width="33.622" height="17.014" rx="4"/><rect x=".184" y="34.99" width="84.121" height="17.014" rx="4"/><rect x=".209" y=".964" width="50.469" height="17.013" rx="4"/><rect x="67.494" y=".964" width="16.821" height="17.013" rx="4"/></g></g></svg>
-
-
-          </a>
-            <a class="gh-login-link" id="signin-button-mobile" href="https://ghost.org">Back to Ghost</a>
-        </nav>
-        <div class="gh-mobilemenu">
-          <a href="https://blog.ghost.org/">Product</a>
-          <a href="http://dev.ghost.org">Dev</a>
-          <a href="https://ghost.org">Back to Ghost</a>
-        </div>
-    </header>
-
-    <main role="main">
-        <header class="blog-header">
-            <nav class="blog-nav inner">
-                {{navigation}}
-            </nav>
-        </header>
-        <div class="page-wrapper">
-            {{{body}}}
-        </div>
-    </main>
-
-    <div class="modal fade gh-modal" id="blogsubscribe" tabindex="-1" role="dialog" aria-labelledby="Email subscription modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <a class="modal-close" data-dismiss="modal" aria-hidden="true" href="#"><svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.707 12L23.854.854a.5.5 0 0 0-.707-.707L12 11.293.854.146a.5.5 0 0 0-.707.707L11.293 12 .146 23.146a.5.5 0 0 0 .708.708L12 12.707l11.146 11.146a.5.5 0 1 0 .708-.706L12.707 12z"/></svg><span class="hidden">Close</span></a>
-                    <h4 class="modal-title">The latest content, once per week.</h4>
-                    <form class="gh-modal-form" action="{{! populated via code injection}}" method="post">
-                        <div class="gh-modal-form-container">
-                            <input id="fieldEmail" class="gh-input" name="{{! populated via code injection}}" type="email" placeholder="Your email address" autofocus="true" required />
-                            <button class="gh-btn gh-btn-green" type="submit"><span>Subscribe</span></button>
-                        </div>
-                        <p><strong>Privacy policy:</strong> No spam. No jibber jabber. Unsubscribe any time.</p>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <footer class="gh-foot gh-foot-min">
-        <div class="gh-foot-content inner">
-            <nav class="gh-foot-min-nav">
-                <a class="gh-foot-min-item gh-foot-min-logo" href="https://ghost.org"><svg class="ghost-svg" viewBox="0 0 493 161" xmlns="http://www.w3.org/2000/svg"><title>Ghost Logo</title><g fill="none" fill-rule="evenodd"><path d="M328.52 37.36c-27.017 0-40.97 19.323-40.97 43.16 0 23.837 13.61 43.162 40.97 43.162s40.968-19.325 40.968-43.163c0-23.84-13.954-43.16-40.97-43.16zm20.438 43.237c-.02 15.328-5.126 27.743-20.44 27.743-15.312 0-20.42-12.414-20.435-27.743v-.078c.016-15.33 5.124-27.74 20.437-27.74 15.312 0 20.42 12.41 20.438 27.74v.07zM207.553 5.19c0-1.103.885-2.124 1.984-2.282 0 0 13.577-1.95 14.784-2.115 1.37-.187 3.19.798 3.19 2.744v44.236c3.23-3.105 6.79-5.608 10.66-7.515 3.88-1.906 8.43-2.86 13.66-2.86 4.53 0 8.53.776 12.03 2.33 3.5 1.55 6.43 3.73 8.77 6.533 2.34 2.81 4.12 6.16 5.33 10.05 1.21 3.9 1.82 8.19 1.82 12.87v51.35c0 1.1-.89 2-2 2h-15.95c-1.1 0-2-.9-2-1.99V69.18c0-5.118-1.17-9.08-3.51-11.888-2.35-2.804-5.86-4.207-10.544-4.207-3.45 0-6.677.79-9.69 2.37-3.02 1.58-5.87 3.73-8.564 6.46v58.617c0 1.102-.894 2-2.002 2h-15.94c-1.11 0-2.005-.895-2.005-2V5.188zm244.007 95.327v-43.68h-13.482c-1.1 0-1.742-.87-1.443-1.916l3-10.49c.262-.9.942-1.87 2.308-2.07l9.597-1.35 3.508-23.49c.163-1.09 1.18-2.1 2.274-2.26 0 0 9.192-1.31 10.963-1.58 1.673-.25 3.19.97 3.19 2.81v24.52h17.565c1.106 0 2.002.9 2.002 2.01v11.82c0 1.11-.89 2.01-2.002 2.01h-17.566v43.08c0 6.02 3.623 8.32 7.095 8.32 2.12 0 5.02-1.14 7.19-2.16 1.34-.62 3.41-.16 3.95 1.73l2.45 8.65c.3 1.07-.25 2.37-1.23 2.86 0 0-7.29 4.37-17.06 4.37-13.73 0-22.33-8.08-22.33-23.16zm-44.584-47.74c-7.084 0-12.657 2.476-12.657 8.433 0 7.44 12.01 9.606 20.23 12.64 5.49 2.027 20.24 5.98 20.24 22.016 0 19.48-16 27.807-33.06 27.807-17.06 0-25.4-5.465-25.4-5.465-.96-.527-1.5-1.822-1.2-2.89 0 0 2.1-7.52 2.64-9.386.48-1.68 2.41-2.27 3.64-1.792 4.39 1.712 12.32 4.092 21.28 4.092 9.07 0 13.46-2.803 13.46-8.777 0-7.95-12.26-10.38-20.36-12.967-5.59-1.78-20.36-5.93-20.36-23.566 0-17.373 15.08-25.524 31.2-25.524 13.64 0 23.5 4.69 23.5 4.69 1.01.427 1.58 1.635 1.28 2.698l-2.658 9.357c-.488 1.74-1.898 2.537-3.666 1.957-3.89-1.277-11.2-3.322-18.15-3.322zm-210.313-15.28c-6.695.775-11.472 3.962-14.562 6.93-6.06-4.81-14.49-7.106-23.94-7.106-18.95 0-33.76 9.26-33.76 29.43 0 11.58 4.88 19.56 12.62 24.26-5.75 2.75-9.57 8.59-9.57 14.34 0 9.61 7.5 12.61 7.5 12.61s-13.11 6.44-13.11 19.32c0 16.49 15.01 23.16 33.34 23.16 26.43 0 44.61-11.04 44.61-31.31 0-12.47-9.44-19.36-30.01-20.18-12.2-.48-20.11-.93-22.07-1.58-2.59-.87-3.86-2.96-3.86-5.28 0-2.55 2.08-4.98 5.35-6.65 2.86.516 5.87.768 8.99.768 18.97 0 33.76-9.223 33.76-29.425 0-4.897-.87-9.15-2.46-12.78 2.79-1.506 8.34-2.25 8.34-2.25 1.09-.17 1.975-1.21 1.974-2.31V40.3c0-1.88-1.59-2.955-3.1-2.78zm-49.13 85.132s9.954.38 19.9.84c11.172.52 14.654 2.96 14.654 8.81 0 7.15-9.71 14.1-23.28 14.1-12.88 0-19.314-4.54-19.314-12.08 0-4.33 2.26-9.18 8.04-11.69zm10.66-40.54c-8.978 0-15.983-4.83-15.983-15.35 0-10.53 7.01-15.35 15.983-15.35 8.974 0 15.984 4.81 15.984 15.34 0 10.53-7.002 15.34-15.984 15.34z" fill="#2D3134"></path><g opacity=".6" transform="translate(0 36)" fill="#2E3134"><rect x=".209" y="69.017" width="33.643" height="17.014" rx="4"></rect><rect x="50.672" y="69.017" width="33.622" height="17.014" rx="4"></rect><rect x=".184" y="34.99" width="84.121" height="17.014" rx="4"></rect><rect x=".209" y=".964" width="50.469" height="17.013" rx="4"></rect><rect x="67.494" y=".964" width="16.821" height="17.013" rx="4"></rect></g></g></svg>
-                </a>
-              <a class="gh-foot-min-item" href="https://blog.ghost.org">Product</a>
-              <a class="gh-foot-min-item" href="https://dev.ghost.org">Dev</a>
-              <a class="gh-foot-min-item" href="https://ideas.ghost.org">Feedback</a>
-              <a class="gh-foot-min-item" href="https://help.ghost.org/hc">Support</a>
-              <a class="gh-foot-min-item" href="https://twitter.com/tryghost">@TryGhost</a>
-            </nav>
-            <div class="gh-foot-min-back">
-                <a class="gh-foot-min-item" href="https://ghost.org">Back to Ghost</a>
-            </div>
+    {{!-- The big email subscribe modal content --}}
+    {{#if @labs.subscribers}}
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            {{#if @blog.logo}}
+                <img class="subscribe-overlay-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+            {{/if}}
+            <h1 class="subscribe-overlay-title">Subscribe to {{@blog.title}}</h1>
+            <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+            {{subscribe_form placeholder="youremail@example.com"}}
         </div>
-    </footer>
+    </div>
+    {{/if}}
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    {{ghost_foot}}
-
-    <script src="https://ghost.org/navigation/"></script>
-
+    {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
-    <script type="text/javascript" src="{{asset "js/prism.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
 
-    <script type="text/javascript" src="{{asset "js/bootstrap-modal.js"}}"></script>
+    {{#if pagination.pages}}
+    <script>
+        var maxPages = parseInt('{{pagination.pages}}');
+    </script>
+    <script src="{{asset "js/infinitescroll.js"}}"></script>
+    {{/if}}
+
     <script type="text/javascript" src="https://auth.ghost.org/signin-button.js"></script>
+
+    {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
+    {{{block "scripts"}}}
+
+    {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+    {{ghost_foot}}
 
 </body>
 </html>

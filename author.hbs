@@ -1,38 +1,53 @@
 {{!< default}}
+{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
 
-<header class="author-header" {{#if author.cover_image}}style="background-image: url({{author.cover_image}})"{{/if}}>
-    <div class="vertical">
-        <h1 {{#if author.cover_image}}style="color: #fff"{{/if}}>Posts by {{author.name}}</h1>
+{{#author}}
+{{!-- Everything inside the #author tags pulls data from the author --}}
+<header class="site-header outer {{#if cover_image}}" style="background-image: url({{cover_image}}){{else}}no-cover{{/if}}">
+    <div class="inner">
+        <div class="site-header-content">
+            {{#if profile_image}}
+                <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" />
+            {{/if}}
+            <h1 class="site-title">{{name}}</h1>
+            {{#if bio}}
+                <h2 class="author-bio">{{bio}}</h2>
+            {{/if}}
+            <div class="author-meta">
+                {{#if location}}
+                    <div class="author-location">{{location}} <span class="bull">&bull;</span></div>
+                {{/if}}
+                <div class="author-stats">
+                    {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}} <span class="bull">&bull;</span>
+                </div>
+                {{#if website}}
+                    <a class="social-link social-link-wb" href="{{website}}" target="_blank">{{> "icons/website"}}</a>
+                {{/if}}
+                {{#if twitter}}
+                    <a class="social-link social-link-tw" href="{{twitter_url}}" target="_blank">{{> "icons/twitter"}}</a>
+                {{/if}}
+                {{#if facebook}}
+                    <a class="social-link social-link-fb" href="{{facebook_url}}" target="_blank">{{> "icons/facebook"}}</a>
+                {{/if}}
+                <a class="social-link social-link-rss" href="http://cloud.feedly.com/#subscription/feed/{{url absolute="true"}}/rss/" target="_blank">{{> "icons/rss"}}</a>
+            </div>
+        </div>
     </div>
 </header>
+{{/author}}
 
-<div class="wrap">
-    <section class="blog-content">
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-        {{#foreach posts}}
+        <div class="post-feed">
+            {{#foreach posts}}
 
-        <article class="{{post_class}}">
-            <header class="post-header">
-                <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
-                <section class="post-meta">
-                    <img class="author-img" src="{{author.profile_image}}" alt="Author image" nopin="nopin" />
-                    <span class="author-name">{{author}}</span>
-                    &bull;
-                    <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="D MMM YYYY"}}</time>
-                    <span class="tags">{{tags prefix="• Subject: "}}</span>
-                </section>
-            </header>
-            <section class="post-excerpt">
-                <p>{{excerpt words="55"}}&hellip; <a class="read-more" href="{{url}}">Read More</a></p>
-            </section>
-        </article>
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
 
-        {{/foreach}}
+            {{/foreach}}
+        </div>
 
-        {{pagination}}
-
-    </section>
-
-    {{> sidebar}}
-
-</div>
+    </div>
+</main>

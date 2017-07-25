@@ -1,32 +1,35 @@
 {{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
 
-<div class="wrap">
-    <section class="blog-content">
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+<header class="site-header outer {{#if @blog.cover_image}}" style="background-image: url({{@blog.cover_image}}){{else}}no-cover{{/if}}">
+    <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                {{#if @blog.logo}}
+                    <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+                {{else}}
+                    {{@blog.title}}
+                {{/if}}
+            </h1>
+            <h2 class="site-description">{{@blog.description}}</h2>
+        </div>
+    </div>
+</header>
 
-        {{#foreach posts}}
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-        <article class="{{post_class}}">
-            <header class="post-header">
-                <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
-                <section class="post-meta">
-                    <img class="author-img" src="{{author.profile_image}}" alt="Author image" nopin="nopin" />
-                    <span class="author-name">{{author}}</span>
-                    &bull;
-                    <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="D MMM YYYY"}}</time>
-                    <span class="tags">{{tags prefix="• Subject: "}}</span>
-                </section>
-            </header>
-            <section class="post-excerpt">
-                <p>{{excerpt words="55"}}&hellip; <a class="read-more" href="{{url}}">Read More</a></p>
-            </section>
-        </article>
+        <div class="post-feed">
+            {{#foreach posts}}
 
-        {{/foreach}}
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
 
-        {{pagination}}
+            {{/foreach}}
+        </div>
 
-    </section>
-
-    {{> sidebar}}
-
-</div>
+    </div>
+</main>
