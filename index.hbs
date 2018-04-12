@@ -23,13 +23,36 @@ into the {body} of the default.hbs template --}}
     <div class="inner">
 
         <div class="post-feed">
+            {{#get "posts" filter="primary_tag:writing" include="authors,tags" limit="3"}}
+            {{#foreach posts}}
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
+            {{/foreach}}
+            {{/get}}
+        </div>
+
+        <section class="site-section">
+            <header class="site-section-header">
+                <h2 class="site-section-title">Product Updates</h2>
+                <a class="site-section-morelink" href="#">See more {{> "icons/arrow-right-small"}}</a>
+            </header>
+            <div class="post-feed">
+                {{#get "posts" filter="primary_tag:new-things" include="authors,tags" limit="3"}}
+                {{#foreach posts}}
+                    {{> "post-card"}}
+                {{/foreach}}
+                {{/get}}
+            </div>
+        </section>
+
+
+        {{!-- <div class="post-feed">
             {{#foreach posts}}
 
-                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                 {{> "post-card"}}
 
             {{/foreach}}
-        </div>
+        </div> --}}
 
     </div>
 </main>
