@@ -20,6 +20,9 @@
 
             {{#if feature_image}}
             <figure class="post-full-image" style="background-image: url({{feature_image}})">
+                <div class="post-full-introauthors">
+                    {{> "components/author-accordion"}}
+                </div>
             </figure>
             {{/if}}
 
@@ -30,9 +33,9 @@
             {{!-- Email subscribe form at the bottom of the page --}}
             {{#if @labs.subscribers}}
             <section class="subscribe-form">
-                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-                <p>Get the latest posts delivered right to your inbox</p>
-                {{subscribe_form placeholder="youremail@example.com"}}
+                <h3 class="subscribe-form-title">Ghost Newsletter</h3>
+                <p>Stay up to date with the latest Ghost news, tutorials and resources. All the best bits, delivered every Sunday.</p>
+                {{> "newsletter-form"}}
             </section>
             {{/if}}
 
@@ -181,6 +184,48 @@ $(document).ready(function () {
     window.addEventListener('resize', onResize, false);
 
     update();
+
+    var hoverTimeout;
+    var direction = 'left';
+
+    $('.author-list-item:first-child').addClass('first-child');
+
+    function makeSpaceForAvatar(avatar) {
+        if (avatar.hasClass('first-child')) {
+            return;
+        }
+
+        $('.author-list-item').each(function(i, obj) {
+
+            if ($(this)[0] != avatar[0]) {
+                if (Number($(this).css('z-index')) > Number(avatar.css('z-index'))) {
+                    $(this).children('.moving-avatar').addClass('left');
+                } else {
+                    $(this).children('.moving-avatar').addClass('right');
+                }
+            }
+
+        });
+    }
+
+    $('.author-list-item').hover(function(){
+        var $this = $(this);
+
+        clearTimeout(hoverTimeout);
+
+        $('.author-card').removeClass('hovered');
+        $(this).children('.author-card').addClass('hovered');
+
+        makeSpaceForAvatar($this);
+    }, function() {
+        var $this = $(this);
+
+        $('.author-list-item').children('.moving-avatar').removeClass('left right');
+
+        hoverTimeout = setTimeout(function() {
+            $this.children('.author-card').removeClass('hovered');
+        }, 800);
+    });
 
 });
 </script>

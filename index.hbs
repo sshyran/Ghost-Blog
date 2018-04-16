@@ -26,7 +26,11 @@ into the {body} of the default.hbs template --}}
             {{#get "posts" filter="primary_tag:writing" include="authors,tags" limit="3"}}
             {{#foreach posts}}
                 {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-                {{> "post-card"}}
+                {{#has tag="#featured"}}
+                    {{> "post-card-featured"}}
+                {{else}}
+                    {{> "post-card"}}
+                {{/has}}
             {{/foreach}}
             {{/get}}
         </div>

@@ -12,14 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{!-- Styles'n'Scripts --}}
-    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6076934/7558352/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6076934/6331992/css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
     {{!-- This tag outputs SEO meta+structured data and other important settings --}}
     {{ghost_head}}
 
 </head>
-<body class="{{body_class}}">
+<body class="{{body_class}} {{block "special_body_class"}}">
     {{> "ghost-header"}}
 
     <div class="site-wrapper">

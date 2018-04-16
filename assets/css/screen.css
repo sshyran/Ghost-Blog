@@ -57,7 +57,14 @@ body {
 .site-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: calc(100vh - 56px);
+}
+
+@media (max-width: 660px) {
+    .site-wrapper {
+        min-height: calc(100vh - 48px);
+        padding-top: 48px;
+    }
 }
 
 .site-main {
@@ -202,11 +209,14 @@ body {
 }
 
 
-/* 6. Podcast Feed
+/* 6. Podcast
 /* ---------------------------------------------------------- */
 
 .page-template.page-podcast {
     background: color(var(--darkgrey) l(-10%));
+}
+.page-template.page-podcast.gh-head-transparent .gh-head {
+    margin-bottom: -55px;
 }
 .page-template.page-podcast .site-main {
     background: transparent;
@@ -222,23 +232,45 @@ body {
     background: rgba(0,0,0,0.7);
 }
 
+.page-template.page-podcast .site-header-content {
+    padding: calc(9vw + 55px) 4vw 100px;
+    max-height: none;
+}
+
 .podcast-title {
-    color: #ff3472;
-    z-index: 10;
+    position: relative;
+    color: #fff;
     margin: 0;
     padding: 0;
-    font-size: 4.2rem;
-    font-weight: 500;
+    font-size: 7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.podcast-title::after {
+    display: block;
+    content: "The Podcast";
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--yellow);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
 .podcast-description {
-    max-width: 800px;
-    margin: 10px auto 0;
-    font-size: 2.2rem;
+    margin: 50px auto 30px;
+    font-size: 2.8rem;
     line-height: 1.5em;
-    font-family: Georgia, serif;
-    font-style: italic;
+    font-family: var(--serif);
     opacity: 0.8;
+}
+
+.podcast-description em {
+    color: var(--yellow);
 }
 
 .podcast-subscribe-buttons {
@@ -247,7 +279,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 30px 0 0 0;
 }
 
 .btn-podcast {
@@ -337,7 +368,7 @@ body {
 }
 
 .podcast-card-excerpt {
-    font-family: Georgia, serif;
+    font-family: var(--serif);
 }
 
 .podcast-card-excerpt p {
@@ -365,9 +396,19 @@ body {
     font-size: 2rem;
     line-height: 1.5em;
     color: rgba(255,255,255,0.3);
+    transition: color 0.5s ease;
+}
+
+.podcast-lol:hover {
+    color: var(--yellow);
+    transition: color 0.3s ease;
+    cursor: cell;
 }
 
 @media (max-width: 600px) {
+    .page-template.page-podcast .site-header-content {
+        padding: 50px 4vw;
+    }
     .podcast-title {
         font-size: 2.4rem;
     }
@@ -382,6 +423,271 @@ body {
     }
     .podcast-card-content .static-avatar {
         margin: -10px 0 0 0;
+    }
+}
+
+
+/* 6. Newsletter
+/* ---------------------------------------------------------- */
+
+.page-template.page-newsletter {
+    background: color(var(--whitegrey) l(+5%));
+}
+
+.page-template.page-newsletter .site-header {
+    background: transparent;
+}
+
+.page-template.page-newsletter .site-header-content {
+    padding: 9vw 4vw 30px;
+    max-height: none;
+}
+
+.newsletter-title {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 7.2rem;
+    font-weight: 700;
+    color: color(var(--blue) l(-5%));
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.newsletter-title::before {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 105%;
+    height: 20px;
+    background: color(var(--blue) l(+15%) s(+5%));
+    opacity: 0.2;
+}
+
+.newsletter-description {
+    max-width: 800px;
+    margin: 40px auto 0;
+    font-size: 2.8rem;
+    line-height: 1.5em;
+    font-family: var(--serif);
+    color: var(--darkgrey);
+    opacity: 0.7;
+}
+
+.page-template.page-newsletter .site-main {
+    background: transparent;
+}
+
+.page-template.page-newsletter .site-main::before {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 35vw;
+    left: 0;
+    transform: translateX(-50%) rotate(49deg);
+    width: 43%    ;
+    height: 15vw;
+    background: color(var(--blue) l(+15%) s(+5%));
+    opacity: 0.2;
+}
+
+.page-template.page-newsletter .site-main::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 30vw;
+    left: 0;
+    transform: translateX(-50%) rotate(49deg);
+    width: 48%    ;
+    height: 15vw;
+    background: color(var(--blue) l(+15%) s(+5%));
+    opacity: 0.2;
+}
+
+.page-template.page-newsletter .kg-card-markdown ul {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.page-template.page-newsletter .kg-card-markdown ul span {
+    font-size: 2rem;
+    vertical-align: middle;
+}
+
+.newsletter-form-container {
+    position: relative;
+    z-index: 900;
+    width: 85%;
+    max-width: 600px;
+    margin: 50px auto 4vw;
+    padding: 30px 50px 40px 50px;
+    background: #fff;
+    border-radius: 10px;
+    transform: scale(1.15);
+    box-shadow: rgba(39,44,49,0.07) 8px 28px 50px, rgba(39, 44, 49, 0.04) 1px 6px 12px;
+}
+
+.newsletter-form {
+    width: 100%;
+}
+
+.newsletter-form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-form label {
+    display: inline-block;
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.newsletter-form-group .gh-input {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.newsletter-form-group .gh-btn {
+    flex-shrink: 0;
+}
+
+.newsletter-form small {
+    display: block;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-weight: 600;
+}
+
+.newsletter-success-message,
+.newsletter-confirmed-message {
+    display: none;
+}
+
+.successfully-subscribed .newsletter-form,
+.successfully-confirmed .newsletter-form {
+    display: none;
+}
+
+.successfully-subscribed .newsletter-success-message {
+    display: block;
+    text-align: center;
+}
+
+.successfully-confirmed .newsletter-confirmed-message {
+    display: block;
+    text-align: center;
+}
+
+.newsletter-quotes {
+    position: relative;
+    z-index: 900;
+    display: flex;
+    margin: 4vw -20px;
+}
+
+.newsletter-quote {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px 40px;
+    text-align: center;
+}
+
+.newsletter-quote img {
+    display: block;
+    width: 105px;
+    height: 105px;
+    border: #fff 5px solid;
+    border-radius: 100%;
+}
+
+.newsletter-quote h3 {
+    margin: 10px 0 0 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.newsletter-quote-desc {
+    margin: 6px 0 0 0;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    line-height: 1.3em;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--blue);
+}
+
+.newsletter-quote blockquote {
+    margin: 20px 0 0 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.9rem;
+    line-height: 1.6em;
+    font-family: var(--serif);
+    opacity: 0.8;
+}
+
+@media (max-width: 800px) {
+    .newsletter-title {
+        font-size: 8vw;
+    }
+    .newsletter-description {
+        font-size: 2rem;
+    }
+    .newsletter-quote:last-child {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .page-template.page-newsletter .site-header-content {
+        padding: 50px 4vw 30px;
+    }
+    .page-template.page-newsletter .kg-card-markdown li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 250px;
+        margin: 20px auto;
+    }
+    .page-template.page-newsletter .kg-card-markdown ul span {
+        font-size: 3.5rem;
+        line-height: 1em;
+    }
+
+    .newsletter-form-container {
+        padding: 6vw 8vw;
+    }
+    .newsletter-form-group {
+        flex-direction: column;
+    }
+    .newsletter-form-group .gh-input {
+        margin: 0 0 10px 0;
+    }
+    .newsletter-form-group .gh-btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .newsletter-quotes {
+        margin-top: 60px;
+    }
+    .newsletter-quote:first-child {
+        display: none;
     }
 }
 
@@ -445,12 +751,12 @@ body {
 
 .post-card-tags {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
     color: var(--midgrey);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.15em;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -466,7 +772,7 @@ body {
 }
 
 .post-card-excerpt {
-    font-family: Georgia, serif;
+    font-family: var(--serif);
 }
 
 .post-card-meta {
@@ -474,6 +780,36 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     padding: 0 25px 25px;
+}
+
+/* Featured Card - using #featured tag */
+.post-card.tag-hash-featured {
+    position: relative;
+    background-color: var(--darkgrey);
+}
+.post-card.tag-hash-featured .post-card-content-link {
+    padding-top: 225px;
+    color: #fff;
+    text-align: center;
+}
+.post-card.tag-hash-featured .post-card-title {
+    font-size: 3rem;
+}
+.post-card.tag-hash-featured:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
+}
+.post-card.tag-hash-featured .post-card-tags,
+.post-card.tag-hash-featured .reading-time {
+    position: relative;
+    z-index: 100;
+    color: rgba(255,255,255,0.6);
 }
 
 .author-profile-image {
@@ -524,17 +860,17 @@ body {
     display: block;
     height: 56px;
     width: 56px;
-    border: #fff 2px solid;
+    border: #fff 3px solid;
     margin: 0 -6px;
     border-radius: 100%;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99) 0.7s;
+    transition: margin 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99) 0.7s;
 }
 
 @media (min-width: 800px) {
     .author-list:hover .moving-avatar {
         margin: 0;
-        transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+        transition: margin 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     }
 }
 
@@ -572,10 +908,10 @@ body {
     flex-shrink: 0;
     margin-left: 20px;
     color: var(--midgrey);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 33px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -625,9 +961,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5px;
     color: var(--midgrey);
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
@@ -646,24 +984,20 @@ body {
 }
 
 .post-full-image {
-    height: 800px;
-    margin: 0 -10vw -165px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 55%;
+    margin: 0;
     background: var(--lightgrey) center center;
     background-size: cover;
-    border-radius: 5px;
 }
 
-@media (max-width: 1170px) {
+@media (max-width: 1130px) {
     .post-full-image {
-        height: 600px;
-        margin: 0 -4vw -100px;
+        width: calc(100% + 8vw);
+        padding-bottom: 60%;
+        margin: 0 -4vw;
         border-radius: 0;
-    }
-}
-
-@media (max-width: 800px) {
-    .post-full-image {
-        height: 400px;
     }
 }
 
@@ -671,50 +1005,55 @@ body {
     position: relative;
     min-height: 230px;
     margin: 0 auto;
-    padding: 70px 100px 0;
-    font-family: Georgia, serif;
-    font-size: 2.2rem;
-    line-height: 1.6em;
+    padding: 90px 140px 0;
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    line-height: 1.75em;
     background: #fff;
-}
-
-@media (max-width: 1170px) {
-    .post-full-content {
-        padding: 5vw 7vw 0;
-    }
-}
-@media (max-width: 800px) {
-    .post-full-content {
-        font-size: 1.9rem;
-    }
 }
 
 .post-full-content:before {
     content: "";
     position: absolute;
-    top: 15px;
-    left: -5px;
+    top: -520px;
+    left: -3px;
     z-index: -1;
     display: block;
     width: 20px;
-    height: 200px;
-    background: rgba(39,44,49,0.15);
-    filter: blur(5px);
-    transform: rotate(-5deg);
+    height: 900px;
+    background: rgba(39,44,49,0.08);
+    filter: blur(9px);
+    transform: rotate(-1deg);
 }
 
 .post-full-content:after {
     content: "";
     position: absolute;
-    top: 15px;
-    right: -5px;
+    top: -520px;
+    right: -3px;
     z-index: -1;
     display: block;
     width: 20px;
-    height: 200px;
-    background: rgba(39,44,49,0.15);
-    filter: blur(5px);
-    transform: rotate(5deg);
+    height: 900px;
+    background: rgba(39,44,49,0.08);
+    filter: blur(9px);
+    transform: rotate(1deg);
+}
+
+@media (max-width: 1130px) {
+    .post-full-content {
+        padding: 60px 7vw 0;
+    }
+    .post-full-content:before,
+    .post-full-content:after {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-full-content {
+        padding: 40px 0;
+    }
 }
 
 .no-image .post-full-content {
@@ -731,6 +1070,7 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 920px;
+    margin: 0 auto;
 }
 
 .post-full-content h1,
@@ -760,7 +1100,7 @@ body {
 
 .post-template .kg-card-markdown > p:first-child {
     font-size: 1.25em;
-    line-height: 1.5em;
+    line-height: 1.65em;
 }
 
 .post-full-content a {
@@ -800,6 +1140,28 @@ body {
     }
 }
 
+
+/* Image captions
+
+Usage (In Ghost editor):
+
+![img](/some/image.jpg)
+<small>Your image caption</small>
+
+*/
+
+.post-full-content img + br + small {
+    display: block;
+    margin-top: -3.4em;
+    margin-bottom: 1.5em;
+    font-style: italic;
+    font-family: var(--sans-serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+
 /* Full bleed images (#full)
 Super neat trick courtesy of @JoelDrapper
 
@@ -813,21 +1175,8 @@ Usage (In Ghost edtior):
     max-width: none;
 }
 
-
-/* Image captions
-
-
-Usage (In Ghost editor):
-
-![img](/some/image.jpg)
-<small>Your image caption</small>
-
-*/
-
-.post-full-content img + br + small {
-    display: block;
-    margin-top: -3em;
-    margin-bottom: 1.5em;
+.post-full-content img[src$="#full"] + br + small {
+    margin-left: 20px;
 }
 
 
@@ -891,7 +1240,7 @@ Usage (In Ghost editor):
 }
 
 .post-full-content hr {
-    margin: 4vw 0;
+    margin: calc(4vw - 1.5em) 0 4vw;
 }
 
 .post-full-content hr:after {
@@ -915,7 +1264,7 @@ Usage (In Ghost editor):
 .post-full-content h5,
 .post-full-content h6 {
     color: color(var(--darkgrey) l(-5%));
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: var(--sans-serif);
 }
 
 .post-full-content h1 {
@@ -1033,17 +1382,6 @@ Usage (In Ghost editor):
     .post-full-title {
         font-size: 2.9rem;
     }
-    .post-full-image {
-        height: 350px;
-        margin-bottom: 4vw;
-    }
-    .post-full-content {
-        padding: 0;
-    }
-    .post-full-content:before,
-    .post-full-content:after {
-        display: none;
-    }
 }
 
 /* Tables */
@@ -1056,7 +1394,7 @@ Usage (In Ghost editor):
     border-spacing: 0;
     border-collapse: collapse;
     vertical-align: top;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: var(--sans-serif);
     font-size: 1.6rem;
     white-space: nowrap;
 }
@@ -1104,7 +1442,7 @@ Usage (In Ghost editor):
 
 .subscribe-form {
     margin: 1.5em 0;
-    padding: 6.5vw 7vw 7vw;
+    padding: 5.5vw 7vw 6vw;
     border: color(var(--whitegrey) l(+2%)) 1px solid;
     text-align: center;
     background: color(var(--whitegrey) l(+4%));
@@ -1121,73 +1459,19 @@ Usage (In Ghost editor):
 }
 
 .subscribe-form p {
-    margin-bottom: 1em;
-    color: var(--midgrey);
-    font-size: 2.2rem;
+    max-width: 600px;
+    margin: 0.5em auto 2em;
+    color: color(var(--midgrey) l(-5%));
+    font-family: var(--serif);
+    font-size: 2rem;
     line-height: 1.55em;
-    letter-spacing: 0.2px;
 }
 
 .subscribe-form form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 420px;
     margin: 0 auto;
-}
-
-.subscribe-form .form-group {
-    flex-grow: 1;
-}
-
-.subscribe-email {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: color(var(--lightgrey) l(+7%)) 1px solid;
-    color: var(--midgrey);
-    font-size: 1.8rem;
-    line-height: 1em;
-    font-weight: normal;
-    user-select: text;
-    border-radius: 5px;
-    transition: border-color 0.15s linear;
-
-    -webkit-appearance: none;
-}
-
-.subscribe-email:focus {
-    outline: 0;
-    border-color: color(var(--lightgrey) l(-2%));
-}
-
-.subscribe-form button {
-    display: inline-block;
-    height: 41px;
-    margin: 0 0 0 10px;
-    padding: 0 20px;
-    outline: none;
-    color: #fff;
-    font-size: 1.5rem;
-    line-height: 37px;
-    font-weight: 400;
-    text-align: center;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
-    background: linear-gradient(
-    color(var(--blue) whiteness(+7%)),
-    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 5px;
-    box-shadow: 0 0 0 1px inset rgba(0,0,0,0.14);
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.subscribe-form button:active,
-.subscribe-form button:focus {
-    background: color(var(--blue) lightness(-9%) saturation(-10%));
+    width: 85%;
+    max-width: 400px;
+    transform: scale(1.15);
 }
 
 @media (max-width: 650px) {
@@ -1199,18 +1483,6 @@ Usage (In Ghost editor):
     }
 }
 
-@media (max-width: 500px) {
-    .subscribe-form form {
-        flex-direction: column;
-    }
-    .subscribe-form .form-group {
-        width: 100%;
-    }
-    .subscribe-form button {
-        width: 100%;
-        margin: 10px 0 0 0;
-    }
-}
 
 
 /* 7.2. Post Footer
@@ -1220,7 +1492,7 @@ Usage (In Ghost editor):
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 840px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 3vw 0 6vw 0;
 }
@@ -1256,7 +1528,8 @@ Usage (In Ghost editor):
 .author-card-content p {
     margin: 0;
     color: var(--midgrey);
-    line-height: 1.3em;
+    font-family: var(--serif);
+    line-height: 1.5em;
 }
 
 .post-full-footer-right {
@@ -1290,30 +1563,45 @@ Usage (In Ghost editor):
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    padding-top: 40px;
-    border-top: color(var(--lightgrey) l(+10%)) 1px solid;
 }
 
 .post-full-authors-content {
     margin-bottom: 20px;
-}
-
-.post-full-authors-content p {
-    margin-bottom: 0;
+    font-family: var(--serif);
+    font-style: italic;
     color: var(--midgrey);
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     letter-spacing: 0.2px;
     text-align: center;
+}
+
+.post-full-authors-names {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--sans-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-style: normal;
     text-transform: uppercase;
 }
 
 .post-full-authors-content a {
-    display: inline-block;
     color: color(var(--darkgrey) l(+20%));
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-transform: uppercase;
+}
+
+.post-full-introauthors {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 100;
+    bottom: -38px;
+    width: 100%;
+}
+
+.post-full-introauthors .author-list {
+    justify-content: center;
+    padding: 10px 20px;
 }
 
 .post-full-footer .author-list {
@@ -1336,7 +1624,6 @@ Usage (In Ghost editor):
     width: 320px;
     margin-left: -160px;
     font-size: 1.4rem;
-    letter-spacing: 0.2px;
     background: white;
     border-radius: 6px;
     box-shadow: rgba(39,44,49,0.08) 0 12px 26px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
@@ -1367,21 +1654,46 @@ Usage (In Ghost editor):
 }
 
 .author-card .basic-info {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px 20px 20px 20px;
     color: #fff;
-    background: var(--darkgrey);
+    background: color(var(--darkgrey) l(-5%)) no-repeat center center;
+    background-size: cover;
     border-radius: 6px 6px 0 0;
 }
 
+.author-card .basic-info:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
+}
+
+.author-card .basic-info .author-profile-image {
+    box-shadow: rgba(255,255,255,0.2) 0 0 0 4px;
+}
+
 .author-card .basic-info h2 {
+    position: relative;
+    z-index: 10;
     margin: 1em 0 0.5em;
 }
 
-.author-card .bio {
-    padding: 20px 20px 0;
+.author-card-bio {
+    padding: 20px;
+}
+
+.author-card-bio p {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.5em;
 }
 
 @media (max-width: 650px) {
@@ -1418,7 +1730,7 @@ Usage (In Ghost editor):
 /* ---------------------------------------------------------- */
 
 .post-full-comments {
-    max-width: 840px;
+    max-width: 760px;
     margin: 0 auto;
 }
 
@@ -1780,7 +2092,7 @@ Usage (In Ghost editor):
     width: 100px;
     height: 100px;
     margin: 0 0 20px 0;
-    box-shadow: rgba(255,255,255,0.1) 0 0 0 6px;
+    box-shadow: rgba(255,255,255,0.2) 0 0 0 6px;
 }
 
 .site-header-content .author-bio {
@@ -1802,7 +2114,7 @@ Usage (In Ghost editor):
     justify-content: center;
     align-items: center;
     margin: 0 0 10px 0;
-    font-family: Georgia, serif;
+    font-family: var(--serif);
     font-style: italic;
 }
 
@@ -1888,167 +2200,6 @@ Usage (In Ghost editor):
     padding-top: 0;
 }
 
-
-/* 10. Subscribe Overlay
-/* ---------------------------------------------------------- */
-
-.subscribe-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 9000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,25,40,0.97);
-    opacity: 0;
-    transition: opacity 200ms ease-in;
-    pointer-events: none;
-
-    backdrop-filter: blur(3px);
-}
-
-.subscribe-overlay:target {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.subscribe-overlay-content {
-    position: relative;
-    z-index: 9999;
-    margin: 0 0 5vw 0;
-    padding: 4vw;
-    color: #fff;
-    text-align: center;
-}
-
-.subscribe-overlay-logo {
-    position: fixed;
-    top: 23px;
-    left: 30px;
-    height: 30px;
-}
-
-.subscribe-overlay-title {
-    display: inline-block;
-    margin: 0 0 10px 0;
-    font-size: 6rem;
-    line-height: 1.15em;
-}
-
-.subscribe-overlay-description {
-    max-width: 650px;
-    margin: 0 auto 50px;
-    font-family: Georgia, serif;
-    font-size: 3rem;
-    line-height: 1.3em;
-    font-weight: 300;
-    opacity: 0.8;
-}
-
-.subscribe-overlay form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.subscribe-overlay .form-group {
-    flex-grow: 1;
-}
-
-.subscribe-overlay .subscribe-email {
-    display: block;
-    width: 100%;
-    padding: 14px 20px;
-    border: none;
-    color: var(--midgrey);
-    font-size: 2rem;
-    line-height: 1em;
-    font-weight: normal;
-    letter-spacing: 0.5px;
-    user-select: text;
-    border-radius: 8px;
-    transition: border-color 0.15s linear;
-
-    -webkit-appearance: none;
-}
-
-.subscribe-email:focus {
-    outline: 0;
-    border-color: color(var(--lightgrey) l(-2%));
-}
-
-.subscribe-overlay button {
-    display: inline-block;
-    height: 52px;
-    margin: 0 0 0 15px;
-    padding: 0 25px;
-    outline: none;
-    color: #fff;
-    font-size: 1.7rem;
-    line-height: 37px;
-    font-weight: 400;
-    text-align: center;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
-    background: linear-gradient(
-    color(var(--blue) whiteness(+7%)),
-    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 8px;
-    box-shadow: 0 0 0 1px inset rgba(0,0,0,0.14);
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.subscribe-overlay button:active,
-.subscribe-overlay button:focus {
-    background: color(var(--blue) lightness(-9%) saturation(-10%));
-}
-
-.subscribe-overlay-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-}
-
-.subscribe-overlay-close:before {
-    content: "";
-    position: absolute;
-    top: 40px;
-    right: 25px;
-    display: block;
-    width: 30px;
-    height: 2px;
-    background: #fff;
-    opacity: 0.8;
-    transform: rotate(45deg);
-}
-
-.subscribe-overlay-close:after {
-    content: "";
-    position: absolute;
-    top: 40px;
-    right: 25px;
-    display: block;
-    width: 30px;
-    height: 2px;
-    background: #fff;
-    opacity: 0.8;
-    transform: rotate(-45deg);
-}
-
-.subscribe-overlay-close:hover {
-    cursor: default;
-}
 
 
 /* 11. Site Footer
