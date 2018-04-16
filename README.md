@@ -1,8 +1,38 @@
-# The Ghost Blog
+# blog.ghost.org
 
-![image](https://cloud.githubusercontent.com/assets/120485/8188178/20c05762-144c-11e5-9ae2-dee093b617c0.png)
+The theme for our official [company blog](https://blog.ghost.org). This is fairly heavily modified version of the [Casper](https://github.com/tryghost/casper) theme, with a bunch of hard coded variables. It will **not** automatically work on any Ghost installation.
 
-This is the Ghost company blog theme which runs on blog.ghost.org and dev.ghost.org. It's not intended for distribution as an easily re-usable theme, but it is provided here as open source for anybody to hack on and work with if they'd like to.
+
+# Development
+
+Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need Node and Gulp installed globally. After that, from the theme's root directory:
+
+```bash
+$ yarn install
+$ yarn dev
+```
+
+Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+
+The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which you can then upload to your site.
+
+```bash
+$ yarn zip
+```
+
+# PostCSS Features Used
+
+- Autoprefixer - Don't worry about writing browser prefixes of any kind, it's all done automatically with support for the latest 2 major versions of every browser.
+- Variables - Simple pure CSS variables
+- [Color Function](https://github.com/postcss/postcss-color-function)
+
+
+# SVG Icons
+
+Inline SVG icons are included via Handlebars partials. You can find all icons inside `/partials/icons`. To use an icon just include the name of the relevant file, eg. To include the SVG icon in `/partials/icons/rss.hbs` - use `{{> "icons/rss"}}`.
+
+You can add your own SVG icons in the same manner.
+
 
 # Copyright & License
 

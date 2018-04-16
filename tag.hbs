@@ -1,7 +1,5 @@
 {{!< default}}
-{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
 
-{{!-- The big featured header, it uses blog cover image as a BG if available --}}
 {{#tag}}
 <header class="tag-header outer no-cover">
     <div class="inner">
@@ -17,19 +15,17 @@
                 </h2>
             </div>
             <div class="tag-header-right">
-                {{!--Intentionally empty placeholder for CTA--}}
+                {{!--Intentionally empty placeholder--}}
             </div>
         </div>
     </div>
 </header>
 {{/tag}}
 
-{{!-- The main content area --}}
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
         <div class="post-feed">
             {{#foreach posts}}
-                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                 {{> "post-card"}}
             {{/foreach}}
         </div>
