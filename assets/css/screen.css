@@ -2104,32 +2104,39 @@ Usage (In Ghost edtior):
 /* 7.6. Feature Template - Posts tagged with #feature
 /* ---------------------------------------------------------- */
 
+.post-template.tag-hash-feature .site-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    padding: 65% 0 0 0;
+}
+
+.post-template.-tag-hash-feature .site-header:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
+}
+
+.post-template.tag-hash-feature .site-header-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 4vw;
+}
 
 @media (min-width: 601px) {
-    .post-template.tag-hash-feature .site-header {
-        position: relative;
-        width: 100%;
-        padding: 65% 0 0 0;
-    }
-    .post-template.-tag-hash-feature .site-header:before {
-        display: block;
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
-    }
-    .post-template.tag-hash-feature .site-header-content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: 0;
-        padding: 0 4vw;
-    }
+
 
     .post-template.tag-hash-feature .post-full-content {
         margin-top: -100px;
