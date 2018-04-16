@@ -8,6 +8,7 @@ production stylesheet in assets/built/screen.css
 2.  Layout
 3.  Special Templates
 4.  Site Header
+    4.1 Transparent Header
 5.  Site Navigation
 6.  Post Feed
 7.  Single Post
@@ -18,6 +19,7 @@ production stylesheet in assets/built/screen.css
   7.3. Comments
   7.4. Related Posts
   7.5. Floating Header
+  7.6. Feature Post Template
 8.  Author Template
 9.  Error Template
 10. Subscribe Overlay
@@ -182,6 +184,24 @@ body {
     }
 }
 
+
+/* 4.1. Transparent Head - body.gh-head-transparent
+/* ---------------------------------------------------------- */
+
+.gh-head-transparent .gh-head {
+    margin-bottom: -55px;
+}
+.gh-head-transparent .site-header-content {
+    padding: calc(9vw + 55px) 4vw 100px;
+    max-height: none;
+}
+@media (max-width: 600px) {
+    .gh-head-transparent .site-header-content {
+        padding: 50px 4vw;
+    }
+}
+
+
 /* 5. Site Sections
 /* ---------------------------------------------------------- */
 
@@ -215,9 +235,6 @@ body {
 .page-template.page-podcast {
     background: color(var(--darkgrey) l(-10%));
 }
-.page-template.page-podcast.gh-head-transparent .gh-head {
-    margin-bottom: -55px;
-}
 .page-template.page-podcast .site-main {
     background: transparent;
 }
@@ -230,11 +247,6 @@ body {
     content: "";
     display: block;
     background: rgba(0,0,0,0.7);
-}
-
-.page-template.page-podcast .site-header-content {
-    padding: calc(9vw + 55px) 4vw 100px;
-    max-height: none;
 }
 
 .podcast-title {
@@ -406,9 +418,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    .page-template.page-podcast .site-header-content {
-        padding: 50px 4vw;
-    }
     .podcast-title {
         font-size: 2.4rem;
     }
@@ -782,20 +791,20 @@ body {
     padding: 0 25px 25px;
 }
 
-/* Featured Card - using #featured tag */
-.post-card.tag-hash-featured {
+/* Featured Card - using #cover tag */
+.post-card.tag-hash-cover {
     position: relative;
     background-color: var(--darkgrey);
 }
-.post-card.tag-hash-featured .post-card-content-link {
+.post-card.tag-hash-cover .post-card-content-link {
     padding-top: 225px;
     color: #fff;
     text-align: center;
 }
-.post-card.tag-hash-featured .post-card-title {
+.post-card.tag-hash-cover .post-card-title {
     font-size: 3rem;
 }
-.post-card.tag-hash-featured:before {
+.post-card.tag-hash-cover:before {
     display: block;
     content: "";
     position: absolute;
@@ -805,8 +814,8 @@ body {
     left: 0;
     background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
 }
-.post-card.tag-hash-featured .post-card-tags,
-.post-card.tag-hash-featured .reading-time {
+.post-card.tag-hash-cover .post-card-tags,
+.post-card.tag-hash-cover .reading-time {
     position: relative;
     z-index: 100;
     color: rgba(255,255,255,0.6);
@@ -1052,7 +1061,7 @@ body {
 
 @media (max-width: 600px) {
     .post-full-content {
-        padding: 40px 0;
+        padding: 40px 0 0;
     }
 }
 
@@ -1448,6 +1457,11 @@ Usage (In Ghost edtior):
     background: color(var(--whitegrey) l(+4%));
     border-radius: 7px;
 }
+@media (max-width: 600px) {
+    .subscribe-form {
+        padding: 7vw 7vw 10vw;
+    }
+}
 
 .subscribe-form-title {
     margin: 0 0 3px 0;
@@ -1567,23 +1581,25 @@ Usage (In Ghost edtior):
 
 .post-full-authors-content {
     margin-bottom: 20px;
-    font-family: var(--serif);
-    font-style: italic;
+    font-family: var(--sans-serif);
     color: var(--midgrey);
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     letter-spacing: 0.2px;
     text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .post-full-authors-names {
     display: block;
-    margin-top: 3px;
-    font-family: var(--sans-serif);
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    font-style: normal;
-    text-transform: uppercase;
+    margin-top: 5px;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
 }
 
 .post-full-authors-content a {
@@ -1688,6 +1704,8 @@ Usage (In Ghost edtior):
 
 .author-card-bio {
     padding: 20px;
+    color: var(--darkgrey);
+    text-align: left;
 }
 
 .author-card-bio p {
@@ -2083,10 +2101,147 @@ Usage (In Ghost edtior):
 }
 
 
+/* 7.6. Feature Template - Posts tagged with #feature
+/* ---------------------------------------------------------- */
+
+
+@media (min-width: 601px) {
+    .post-template.tag-hash-feature .site-header {
+        position: relative;
+        width: 100%;
+        padding: 65% 0 0 0;
+    }
+    .post-template.-tag-hash-feature .site-header:before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
+    }
+    .post-template.tag-hash-feature .site-header-content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 0 4vw;
+    }
+
+    .post-template.tag-hash-feature .post-full-content {
+        margin-top: -100px;
+    }
+    .post-full-meta {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        opacity: 0.8;
+    }
+    .post-feature-title {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 7rem;
+        letter-spacing: 2px;
+        widows: 3;
+    }
+    .post-feature-excerpt {
+        margin: 20px auto;
+        font-size: 2.8rem;
+    }
+}
+
+.post-feature-excerpt {
+    max-width: 760px;
+    line-height: 1.5em;
+    font-family: var(--serif);
+    opacity: 0.8;
+}
+
+.post-feature-authors-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 40px;
+}
+
+.post-template.tag-hash-feature .site-header-content .moving-avatar {
+    height: 80px;
+    width: 80px;
+    margin: 0 -8px;
+}
+
+.post-template.tag-hash-feature .site-header-content .author-list:hover .moving-avatar {
+    margin: 0 -8px;
+}
+
+.post-feature-authors {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.post-feature-authors em {
+    font-family: var(--serif);
+    text-transform: none;
+}
+
+.post-feature-authors a {
+    color: #fff;
+}
+
+@media (max-width: 1280px) {
+    .post-template.tag-hash-feature .site-header-content {
+        padding-bottom: 4vw;
+    }
+    .post-feature-title {
+        font-size: 5rem;
+    }
+    .post-feature-excerpt {
+        font-size: 2.2rem;
+    }
+    .post-feature-authors-container {
+        top: 30px;
+    }
+}
+
+@media (max-width: 1060px) {
+    .post-template.tag-hash-feature .post-full-content {
+        margin-top: -60px;
+    }
+}
+
+@media (max-width: 920px) {
+    .post-template.tag-hash-feature .site-header-content {
+        padding-bottom: 0;
+    }
+    .post-feature-title {
+        font-size: 4rem;
+    }
+    .post-feature-excerpt {
+        font-size: 2rem;
+    }
+    .post-feature-authors-container {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .post-template.tag-hash-feature .post-full-content {
+        margin-top: 0;
+    }
+}
+
 /* 8. Author Template
 /* ---------------------------------------------------------- */
 
-.site-header-content .author-profile-image {
+.author-template .site-header-content .author-profile-image {
     z-index: 10;
     flex-shrink: 0;
     width: 100px;
@@ -2095,7 +2250,7 @@ Usage (In Ghost edtior):
     box-shadow: rgba(255,255,255,0.2) 0 0 0 6px;
 }
 
-.site-header-content .author-bio {
+.author-template .site-header-content .author-bio {
     z-index: 10;
     flex-shrink: 0;
     max-width: 600px;
@@ -2107,7 +2262,7 @@ Usage (In Ghost edtior):
     opacity: 0.8;
 }
 
-.site-header-content .author-meta {
+.author-template .site-header-content .author-meta {
     z-index: 10;
     flex-shrink: 0;
     display: flex;
@@ -2118,23 +2273,23 @@ Usage (In Ghost edtior):
     font-style: italic;
 }
 
-.site-header-content .author-location svg {
+.author-template .site-header-content .author-location svg {
     height: 1.9rem;
     stroke: #fff;
 }
 
-.site-header-content .bull {
+.author-template .site-header-content .bull {
     display: inline-block;
     margin: 0 12px;
     opacity: 0.5;
 }
 
-.site-header-content .social-link:first-of-type {
+.author-template .site-header-content .social-link:first-of-type {
     padding-left: 4px;
 }
 
 @media (max-width: 500px) {
-    .site-header-content .author-bio {
+    .author-template .site-header-content .author-bio {
         font-size: 1.8rem;
         line-height: 1.15em;
         letter-spacing: 0;
