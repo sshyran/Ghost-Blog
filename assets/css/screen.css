@@ -120,6 +120,7 @@ body {
 
 .site-header {
     position: relative;
+    margin-bottom: -80px;
     padding-top: 12px;
     padding-bottom: 12px;
     color: #fff;
@@ -399,7 +400,7 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 840px;
-    margin: -80px auto 0;
+    margin: 0 auto 0;
     padding: 40px 0 0 0;
 }
 
@@ -551,6 +552,7 @@ body {
 }
 
 .page-template.page-newsletter .site-main {
+    padding-top: 80px;
     background: transparent;
 }
 
@@ -2323,9 +2325,10 @@ Usage (In Ghost edtior):
     z-index: 10;
     flex-shrink: 0;
     max-width: 600px;
-    margin: 5px 0 10px 0;
-    font-size: 2rem;
-    line-height: 1.3em;
+    margin: 0 0 10px 0;
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    line-height: 1.5em;
     font-weight: 300;
     letter-spacing: 0.5px;
     opacity: 0.8;
@@ -2355,6 +2358,59 @@ Usage (In Ghost edtior):
 
 .author-template .site-header-content .social-link:first-of-type {
     padding-left: 4px;
+}
+
+.social-links {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.social-links a:last-of-type {
+    padding-right: 20px;
+}
+
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.social-link:hover {
+    opacity: 1;
+}
+
+.social-link svg {
+    height: 1.8rem;
+    fill: #fff;
+}
+
+.social-link-fb svg {
+    height: 1.5rem;
+}
+
+.social-link-wb svg {
+    height: 1.6rem;
+}
+
+.social-link-wb svg path {
+    stroke: #fff;
+}
+
+.social-link-rss svg {
+    height: 1.9rem;
+}
+
+.no-cover .social-link svg {
+    fill: var(--darkgrey);
+}
+
+.no-cover .social-link-wb svg path {
+    stroke: var(--darkgrey);
 }
 
 @media (max-width: 500px) {
