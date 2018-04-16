@@ -6,9 +6,9 @@ production stylesheet in assets/built/screen.css
 
 1.  Global Styles
 2.  Layout
-3.  Special Templates
+3.  Transparent Head Layout
 4.  Site Header
-    4.1 Transparent Header
+    4.1. Tag Header
 5.  Site Navigation
 6.  Post Feed
 7.  Single Post
@@ -98,6 +98,23 @@ body {
 */
 
 
+/* 3. Transparent Head - body.gh-head-transparent
+/* ---------------------------------------------------------- */
+
+.gh-head-transparent .gh-head {
+    margin-bottom: -55px;
+}
+.gh-head-transparent .site-header-content {
+    padding: calc(9vw + 55px) 4vw 100px;
+    max-height: none;
+}
+@media (max-width: 600px) {
+    .gh-head-transparent .site-header-content {
+        padding: 50px 4vw;
+    }
+}
+
+
 /* 4. Site Header
 /* ---------------------------------------------------------- */
 
@@ -135,6 +152,11 @@ body {
     background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0));
 }
 
+.site-header.no-cover {
+    color: var(--darkgrey);
+    background: transparent;
+}
+
 .site-header.no-cover:before,
 .site-header.no-cover:after {
     display: none;
@@ -157,7 +179,7 @@ body {
     z-index: 10;
     margin: 0;
     padding: 0;
-    font-size: 3.8rem;
+    font-size: 6rem;
     font-weight: 700;
 }
 
@@ -169,7 +191,8 @@ body {
     z-index: 10;
     margin: 0;
     padding: 5px 0;
-    font-size: 2.2rem;
+    font-family: var(--serif);
+    font-size: 2.4rem;
     font-weight: 300;
     letter-spacing: 0.5px;
     opacity: 0.8;
@@ -185,19 +208,60 @@ body {
 }
 
 
-/* 4.1. Transparent Head - body.gh-head-transparent
+/* 4.1. Tag Header
 /* ---------------------------------------------------------- */
 
-.gh-head-transparent .gh-head {
-    margin-bottom: -55px;
+.tag-header {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 60px;
 }
-.gh-head-transparent .site-header-content {
-    padding: calc(9vw + 55px) 4vw 100px;
-    max-height: none;
+
+@media (max-width: 650px) {
+    .tag-header {
+        padding-top: 9vw;
+        padding-bottom: 4vw;
+    }
 }
-@media (max-width: 600px) {
-    .gh-head-transparent .site-header-content {
-        padding: 50px 4vw;
+
+.tag-header-content {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tag-title {
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    color: var(--darkgrey);
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.tag-description {
+    z-index: 10;
+    max-width: 680px;
+    margin: 8px 0 0 0;
+    padding: 0;
+    font-family: var(--serif);
+    font-size: 2rem;
+    line-height: 1.5em;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+@media (max-width: 500px) {
+    .tag-header-content {
+        text-align: center;
+    }
+    .tag-title {
+        font-size: 2.8rem;
+    }
+    .tag-description {
+        font-size: 1.6rem;
     }
 }
 
@@ -2136,8 +2200,6 @@ Usage (In Ghost edtior):
 }
 
 @media (min-width: 601px) {
-
-
     .post-template.tag-hash-feature .post-full-content {
         margin-top: -100px;
     }
