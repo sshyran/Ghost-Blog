@@ -309,6 +309,73 @@ body {
     }
 }
 
+.post-feed.highlight-feed-primary  {
+    margin-bottom: -40px;
+}
+
+.highlight-feed-primary aside {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 40px;
+}
+
+.highlight-feed-primary-widget {
+    flex: 1 1 auto;
+    overflow: hidden;
+    margin: 40px 0 0 0;
+    background: #fff center center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+}
+
+.highlight-feed-primary-widget:first-child {
+    margin: 0;
+}
+
+.highlight-feed-secondary .post-card:first-child,
+.highlight-feed-secondary .post-card-excerpt {
+    display: none;
+}
+.highlight-feed-secondary .post-card-content-link {
+    padding: 25px 25px 5px;
+}
+.highlight-feed-primary aside {
+    flex: 1 1 300px;
+}
+
+@media (min-width: 795px) {
+    .highlight-feed-primary > .post-card:first-child:not(.no-image) {
+        flex: 1 1 660px;
+    }
+    .highlight-feed-primary .post-card:first-child:not(.no-image) .post-card-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 1090px) {
+    .highlight-feed-primary {
+        flex-direction: column;
+    }
+    .highlight-feed-primary > .post-card:first-child:not(.no-image) {
+        flex: 1 1 auto;
+    }
+    .highlight-feed-primary aside {
+        flex-shrink: 0;
+        flex-direction: row;
+    }
+    .highlight-feed-primary-widget {
+        margin: 0 0 0 40px;
+    }
+}
+
+@media (max-width: 650px) {
+    .highlight-feed-primary-widget:last-child {
+        display: none;
+    }
+}
+
 
 /* 5. Site Sections
 /* ---------------------------------------------------------- */
@@ -322,18 +389,43 @@ body {
     margin: 20px 0 -20px;
 }
 
+@media (max-width: 650px) {
+    .site-section-header {
+        padding-bottom: 15px;
+    }
+}
+
 .site-section-title {
     margin: 0;
+    font-family: var(--serif);
+    font-size: 2.4rem;
 }
 
 .site-section-morelink {
-    display: block;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
 }
 
 .site-section-morelink svg {
     width: 7px;
+    margin-left: 5px;
     height: auto;
     stroke-width: 2px;
+}
+
+/* 6. Breakout Section
+/* ---------------------------------------------------------- */
+
+.breakout-section {
+    margin: 40px -4vw 80px;
+    padding: 4vw;
+    color: #fff;
+    background: var(--darkgrey);
 }
 
 
@@ -941,7 +1033,7 @@ body {
 .author-list {
     display: flex;
     flex-wrap: wrap-reverse;
-    margin: 0;
+    margin: 0 2px;
     padding: 0;
     list-style: none;
 }
@@ -994,6 +1086,7 @@ body {
 
 .author-name-tooltip {
     position: absolute;
+    left: -1px;
     bottom: 105%;
     z-index: 999;
     display: block;
