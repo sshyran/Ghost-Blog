@@ -311,6 +311,36 @@ body {
     }
 }
 
+.highlight-feed {
+    position: relative;
+    margin: 0 -4vw 0;
+    padding: 40px 4vw 0;
+}
+.gh-head-transparent .highlight-feed {
+    padding-top: 80px;
+}
+@media (max-width: 1180px) {
+    .highlight-feed {
+        padding-top: 0;
+    }
+}
+
+body:not(.gh-head-transparent) .highlight-feed .inner {
+    padding-bottom: 40px;
+    margin-bottom: 60px;
+    border-bottom: color(var(--lightgrey) l(+10%)) 1px solid;
+}
+
+.highlight-feed-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 270px;
+    background: var(--darkgrey) center top;
+    background-size: cover;
+}
+
 .post-feed.highlight-feed-primary  {
     margin-bottom: -40px;
 }
