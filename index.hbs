@@ -29,12 +29,43 @@
                 {{/foreach}}
                 {{/get}}
                 <aside>
-                    <div class="highlight-feed-primary-widget">
-                        test
-                    </div>
-                    <div class="highlight-feed-primary-widget">
-                        test
-                    </div>
+                    <a class="highlight-feed-ad highlight-feed-primary-widget" href="https://ghost.org/pricing/">
+                        <img src="{{asset "img/ghostpro.svg"}}" alt="Ghost(Pro)">
+                        <p>Spend less time on your server, more time on your site</p>
+                    </a>
+                    {{#get "posts" filter="tag:twig" include="authors,tags" limit="1"}}
+                    {{#foreach posts}}
+                    <a class="highlight-feed-podcast highlight-feed-primary-widget" href="{{url}}" {{#if primary_tag.feature_image}}style="background-image: url({{primary_tag.feature_image}})"{{/if}}>
+                        <div class="highlight-feed-podcast-content">
+                            <header class="highlight-feed-podcast-header">
+                                <div class="highlight-feed-podcast-header-left">The Podcast</div>
+                                <div class="highlight-feed-podcast-header-right">
+                                    <ul class="author-list">
+                                    {{#foreach authors}}
+                                        <li class="author-list-item">
+                                            <div class="author-name-tooltip">
+                                                {{name}}
+                                            </div>
+                                            {{#if profile_image}}
+                                                <div href="{{url}}" class="static-avatar"><img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" /></div>
+                                            {{else}}
+                                                <div href="{{url}}" class="static-avatar author-profile-image">{{> "icons/avatar"}}</div>
+                                            {{/if}}
+
+                                            {{link}}
+                                        </li>
+                                    {{/foreach}}
+                                    </ul>
+                                </div>
+                            </header>
+                            <div class="highlight-feed-podcast-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.5 10c-.276 0-.5.224-.5.5V12h-1V6.5c0-2.802-1.785-5.188-4.276-6.1l-.082-.03C13.97.135 13.251 0 12.5 0c-.752 0-1.471.135-2.143.371L10.278.4C7.786 1.311 6 3.697 6 6.5V12H5v-1.5c0-.276-.224-.5-.5-.5s-.5.224-.5.5v2c0 4.598 3.476 8.223 8 8.476V23.5c0 .276.224.5.5.5s.5-.224.5-.5v-2.524c4.524-.252 8-3.878 8-8.476v-2c0-.276-.224-.5-.5-.5zM7 11h3.5c.276 0 .5-.224.5-.5s-.224-.5-.5-.5H7V9h3.5c.276 0 .5-.224.5-.5s-.224-.5-.5-.5H7V7h3.5c.276 0 .5-.224.5-.5s-.224-.5-.5-.5H7.025C7.199 4.082 8.363 2.447 10 1.607V3.5c0 .276.224.5.5.5s.5-.224.5-.5V1.213c.323-.092.656-.157 1-.188V3.5c0 .276.224.5.5.5s.5-.224.5-.5V1.025c.344.031.678.096 1.001.188L14 3.5c0 .276.224.5.5.5s.5-.224.5-.5l.001-1.892c1.637.84 2.8 2.474 2.974 4.392H14.5c-.276 0-.5.224-.5.5s.224.5.5.5H18v1h-3.5c-.276 0-.5.224-.5.5s.224.5.5.5H18v1h-3.5c-.276 0-.5.224-.5.5s.224.5.5.5H18v1H7v-1zm10.975 2c-.254 2.799-2.611 5-5.475 5s-5.221-2.201-5.475-5h10.95zM12.5 20c-4.036 0-7.225-3.037-7.476-7h1.001c.257 3.351 3.059 6 6.475 6s6.218-2.649 6.475-6h1.001c-.251 3.963-3.439 7-7.476 7z"/></svg>
+                            </div>
+                            <h3 class="highlight-feed-podcast-title">{{title}}</h3>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                    {{/get}}
                 </aside>
             </div>
             <div class="post-feed highlight-feed-secondary">

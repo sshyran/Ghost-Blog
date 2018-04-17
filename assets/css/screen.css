@@ -323,17 +323,127 @@ body {
 }
 
 .highlight-feed-primary-widget {
+    display: block;
     flex: 1 1 auto;
     overflow: hidden;
+    padding: 25px;
     margin: 40px 0 0 0;
     background: #fff center center;
     background-size: cover;
     border-radius: 5px;
     box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+    transition: all 0.5s ease;
+}
+
+.highlight-feed-primary-widget:hover {
+    text-decoration: none;
+    box-shadow: rgba(39,44,49,0.07) 8px 28px 50px, rgba(39, 44, 49, 0.04) 1px 6px 12px;
+    transition: all 0.4s ease;
+    transform: translate3D(0, -1px, 0) scale(1.02);
 }
 
 .highlight-feed-primary-widget:first-child {
     margin: 0;
+}
+
+.highlight-feed-ad {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: color(var(--midgrey) l(-5%));
+}
+
+.highlight-feed-ad img {
+    flex-shrink: 0;
+    height: 40px;
+    width: auto;
+}
+
+.highlight-feed-ad p {
+    display: block;
+    margin: 5px 0 0 0;
+    max-width: 220px;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    line-height: 1.3em;
+}
+
+.highlight-feed-podcast {
+    position: relative;
+    display: flex;
+    color: #fff;
+}
+
+.highlight-feed-podcast:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(35deg, rgba(0,0,0,0.90) 0%,rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.5) 50%);;
+}
+
+.highlight-feed-podcast-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.highlight-feed-podcast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 1em;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.highlight-feed-podcast-header .author-list {
+    margin: 0 1px;
+}
+
+.highlight-feed-podcast-header .static-avatar {
+    height: 24px;
+    width: 24px;
+    border-width: 1px;
+    margin: 0 -3px;
+}
+
+.highlight-feed-podcast-header .author-name-tooltip {
+    display: none;
+}
+
+.highlight-feed-podcast-icon {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight-feed-podcast-icon svg {
+    width: auto;
+    height: 80px;
+    fill: var(--yellow);
+}
+
+.highlight-feed-podcast-title {
+    width: 100%;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.35em;
 }
 
 .highlight-feed-secondary .post-card:first-child,
@@ -373,8 +483,11 @@ body {
 }
 
 @media (max-width: 650px) {
-    .highlight-feed-primary-widget:last-child {
+    .highlight-feed-primary-widget:first-child {
         display: none;
+    }
+    .highlight-feed-primary-widget:last-child {
+        margin: 0;
     }
 }
 
@@ -2615,69 +2728,4 @@ Usage (In Ghost edtior):
 
 .error-template .post-feed {
     padding-top: 0;
-}
-
-
-
-/* 11. Site Footer
-/* ---------------------------------------------------------- */
-
-.site-footer {
-    position: relative;
-    padding-top: 20px;
-    padding-bottom: 60px;
-    color: #fff;
-    background: color(var(--darkgrey) l(-10%));
-}
-
-.site-footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    color: rgba(255,255,255,0.7);
-    font-size: 1.3rem;
-}
-
-.site-footer-content a {
-    color: rgba(255,255,255,0.7);
-}
-
-.site-footer-content a:hover {
-    color: rgba(255,255,255,1);
-    text-decoration: none;
-}
-
-.site-footer-nav {
-    display: flex;
-}
-
-.site-footer-nav a {
-    position: relative;
-    margin-left: 20px;
-}
-
-.site-footer-nav a:before {
-    content: "";
-    position: absolute;
-    top: 11px;
-    left: -11px;
-    display: block;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 100%;
-}
-
-.site-footer-nav a:first-of-type:before {
-    display: none;
-}
-
-@media (max-width: 650px) {
-    .site-footer-content {
-        flex-direction: column;
-    }
-    .site-footer-nav a:first-child {
-        margin-left: 0;
-    }
 }
