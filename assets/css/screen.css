@@ -72,12 +72,14 @@ body {
 .site-main {
     z-index: 100;
     flex-grow: 1;
+    padding-bottom: 4vw;
 }
 
 /* Full width page blocks */
 .outer {
     position: relative;
-    padding: 0 4vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
 }
 
 /* Centered content container blocks */
@@ -1145,7 +1147,6 @@ body {
 
 .post-template .site-main,
 .page-template .site-main {
-    padding-bottom: 4vw;
     background: #fff;
 }
 

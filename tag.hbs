@@ -5,7 +5,13 @@
     <div class="inner">
         <div class="tag-header-content">
             <div class="tag-header-left">
-                <h1 class="tag-title">{{name}}</h1>
+                <h1 class="tag-title">
+                    {{#if meta_title}}
+                        {{meta_title}}
+                    {{else}}
+                        {{name}}
+                    {{/if}}
+                </h1>
                 <h2 class="tag-description">
                     {{#if description}}
                         {{description}}
@@ -22,7 +28,7 @@
 </header>
 {{/tag}}
 
-<main id="site-main" class="site-main outer" role="main">
+<main id="site-main" class="site-main outer">
     <div class="inner">
         <div class="post-feed">
             {{#foreach posts}}

@@ -1,4 +1,7 @@
 {{!< default}}
+{{#if @blog.cover_image}}
+{{#contentFor "special_body_class"}}gh-head-transparent{{/contentFor}}
+{{/if}}
 
 <header class="site-header outer {{#if @blog.cover_image}}" style="background-image: url({{@blog.cover_image}}){{else}}no-cover{{/if}}">
     <div class="inner">
@@ -15,7 +18,7 @@
     </div>
 </header>
 
-<main id="site-main" class="site-main outer" role="main">
+<main id="site-main" class="site-main outer">
     <div class="inner">
 
         <div class="site-section">
@@ -45,15 +48,15 @@
 
     </div>
 
-    <section class="breakout-section">
+    <div class="breakout-section">
         <div class="inner">
             CTA
         </div>
-    </section>
+    </div>
 
     <div class="inner">
 
-        <section class="site-section">
+        <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Product Updates</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/new-things/">See more {{> "icons/arrow-right-small"}}</a>
@@ -65,9 +68,9 @@
                 {{/foreach}}
                 {{/get}}
             </div>
-        </section>
+        </div>
 
-        <section class="site-section">
+        <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Tutorials</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/tutorials/">See more {{> "icons/arrow-right-small"}}</a>
@@ -79,11 +82,11 @@
                 {{/foreach}}
                 {{/get}}
             </div>
-        </section>
+        </div>
 
         {{#get "posts" filter="tag:careers" include="authors,tags" limit="3"  as |careers|}}
         {{#if careers}}
-        <section class="site-section">
+        <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Careers at Ghost</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/careers/">See more {{> "icons/arrow-right-small"}}</a>
@@ -95,11 +98,11 @@
                 {{/foreach}}
 
             </div>
-        </section>
+        </div>
         {{/if}}
         {{/get}}
 
-        <section class="site-section">
+        <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Writing Tips</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/writing/">See more {{> "icons/arrow-right-small"}}</a>
@@ -111,7 +114,7 @@
                 {{/foreach}}
                 {{/get}}
             </div>
-        </section>
+        </div>
 
 
         {{!-- <div class="post-feed">

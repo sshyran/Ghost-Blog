@@ -4,12 +4,12 @@
 <header class="site-header outer {{#if feature_image}}" style="background-image: url({{feature_image}}){{else}}no-cover{{/if}}">
     <div class="inner">
         <div class="site-header-content">
-            <section class="post-full-meta">
+            <div class="post-full-meta">
                 <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
                 {{#primary_tag}}
                     <span class="date-divider">/</span> <a href="{{url}}">{{name}}</a>
                 {{/primary_tag}}
-            </section>
+            </div>
             <h1 class="post-feature-title js-foating-header-trigger js-no-widows">{{title}}</h1>
             <p class="post-feature-excerpt js-no-widows">{{custom_excerpt}}</p>
             <div class="post-feature-authors-container">
@@ -20,7 +20,7 @@
     </div>
 </header>
 
-<main id="site-main" class="site-main outer" role="main">
+<main id="site-main" class="site-main outer">
     <div class="inner">
 
         <article class="post-full {{post_class}}">
