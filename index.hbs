@@ -69,13 +69,13 @@
                         {{/get}}
                     </aside>
                 </div>
+                {{#get "posts" filter="featured:true" include="authors,tags" limit="4"}}
                 <div class="post-feed highlight-feed-secondary">
-                    {{#get "posts" filter="featured:true" include="authors,tags" limit="4"}}
                     {{#foreach posts}}
                         {{> "post-card"}}
                     {{/foreach}}
-                    {{/get}}
                 </div>
+                {{/get}}
             </div>
 
         </div>
@@ -90,33 +90,33 @@
 
     <div class="inner">
 
+        {{#get "posts" filter="tag:new-things+featured:false" include="authors,tags" limit="3"}}
         <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Product Updates</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/new-things/">See more {{> "icons/arrow-right-small"}}</a>
             </header>
             <div class="post-feed">
-                {{#get "posts" filter="tag:new-things+featured:false" include="authors,tags" limit="3"}}
                 {{#foreach posts}}
                     {{> "post-card"}}
                 {{/foreach}}
-                {{/get}}
             </div>
         </div>
+        {{/get}}
 
+        {{#get "posts" filter="tag:tutorials+featured:false" include="authors,tags" limit="3"}}
         <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Tutorials</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/tutorials/">See more {{> "icons/arrow-right-small"}}</a>
             </header>
             <div class="post-feed">
-                {{#get "posts" filter="tag:tutorials+featured:false" include="authors,tags" limit="3"}}
                 {{#foreach posts}}
                     {{> "post-card"}}
                 {{/foreach}}
-                {{/get}}
             </div>
         </div>
+        {{/get}}
 
         {{#get "posts" filter="tag:careers" include="authors,tags" limit="3"  as |careers|}}
         {{#if careers}}
@@ -136,33 +136,33 @@
         {{/if}}
         {{/get}}
 
+        {{#get "posts" filter="tag:inside-ghost+featured:false" include="authors,tags" limit="3"}}
         <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Behind the Scenes</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/inside-ghost/">See more {{> "icons/arrow-right-small"}}</a>
             </header>
             <div class="post-feed">
-                {{#get "posts" filter="tag:inside-ghost+featured:false" include="authors,tags" limit="3"}}
                 {{#foreach posts}}
                     {{> "post-card"}}
                 {{/foreach}}
-                {{/get}}
             </div>
         </div>
+        {{/get}}
 
+        {{#get "posts" filter="tag:writing+featured:false" include="authors,tags" limit="3"}}
         <div class="site-section">
             <header class="site-section-header">
                 <h2 class="site-section-title">Writing Tips</h2>
                 <a class="site-section-morelink" href="{{@blog.url}}/tag/writing/">See more {{> "icons/arrow-right-small"}}</a>
             </header>
             <div class="post-feed">
-                {{#get "posts" filter="tag:writing+featured:false" include="authors,tags" limit="3"}}
                 {{#foreach posts}}
                     {{> "post-card"}}
                 {{/foreach}}
-                {{/get}}
             </div>
         </div>
+        {{/get}}
 
 
         {{!-- <div class="post-feed">
