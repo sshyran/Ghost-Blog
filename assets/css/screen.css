@@ -820,6 +820,7 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
     height: 20px;
     background: color(var(--blue) l(+15%) s(+5%));
     opacity: 0.2;
+    z-index: -1;
 }
 
 .newsletter-description {
