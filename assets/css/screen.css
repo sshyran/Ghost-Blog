@@ -2592,12 +2592,8 @@ Usage (In Ghost edtior):
 /* 7.7. Koenig Styles
 /* ---------------------------------------------------------- */
 
-.post-template .kg-card-markdown > p:first-child,
-.post-template .kg-post > p:first-child {
-    font-size: 1.25em;
-    line-height: 1.5em;
-}
 
+/* Ghost 1.0 - .kg-card-markdown to be depricated */
 .kg-card-markdown {
     display: flex;
     flex-direction: column;
@@ -2606,14 +2602,31 @@ Usage (In Ghost edtior):
     margin: 0 auto;
 }
 
+.post-template .kg-card-markdown > p:first-child {
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
 .kg-post {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.post-template .kg-post > p:first-child {
+    font-size: 1.25em;
+    line-height: 1.5em;
 }
 
 .post-full-content .kg-image {
     max-width: 760px;
+}
+
+/* Preventing full-width image overlap with post image.  */
+.post-full-image + .post-full-content .kg-post *:first-child .kg-image {
+    width: 100%;
 }
 
 .post-full-content .kg-image--wide {
