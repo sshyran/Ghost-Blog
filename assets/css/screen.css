@@ -20,6 +20,7 @@ production stylesheet in assets/built/screen.css
   7.4. Related Posts
   7.5. Floating Header
   7.6. Feature Post Template
+  7.7. Koenig
 8.  Author Template
 9.  Error Template
 10. Subscribe Overlay
@@ -250,7 +251,7 @@ body {
     margin: 8px 0 0 0;
     padding: 0;
     font-family: var(--serif);
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.5em;
     font-weight: 300;
     letter-spacing: -0.2px;
@@ -1132,6 +1133,11 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
     font-family: var(--serif);
 }
 
+.post-card-excerpt p {
+    letter-spacing: normal;
+    line-height: 1.75em;
+}
+
 .post-card-meta {
     display: flex;
     justify-content: space-between;
@@ -1507,7 +1513,8 @@ Usage (In Ghost editor):
 
 */
 
-.post-full-content img + br + small {
+.post-full-content img + br + small,
+.post-full-content .kg-image-card figcaption {
     display: block;
     margin-top: -3.4em;
     margin-bottom: 1.5em;
@@ -1890,7 +1897,6 @@ Usage (In Ghost edtior):
 .author-card-content p {
     margin: 0;
     color: var(--midgrey);
-    font-family: var(--serif);
     line-height: 1.5em;
 }
 

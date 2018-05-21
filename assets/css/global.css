@@ -339,6 +339,7 @@ ol,
 dl,
 blockquote {
     margin: 0 0 1.5em 0;
+    letter-spacing: -0.1px;
 }
 
 ol,
@@ -451,11 +452,11 @@ h1 {
 
 h2 {
     margin: 1.5em 0 0.5em 0;
-    font-size: 1.8rem;
+    font-size: 2.0rem;
 }
 @media (max-width: 500px) {
     h2 {
-        font-size: 1.8rem;
+        font-size: 2.0rem;
     }
 }
 
