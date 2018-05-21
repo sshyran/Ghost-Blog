@@ -1428,14 +1428,6 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
     display: none;
 }
 
-.kg-card-markdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 920px;
-    margin: 0 auto;
-}
-
 .post-full-content h1,
 .post-full-content h2,
 .post-full-content h3,
@@ -2594,6 +2586,68 @@ Usage (In Ghost edtior):
 @media (max-width: 650px) {
     .post-template.tag-hash-feature .post-full-content {
         margin-top: 0;
+    }
+}
+
+/* 7.7. Koenig Styles
+/* ---------------------------------------------------------- */
+
+.post-template .kg-card-markdown > p:first-child,
+.post-template .kg-post > p:first-child {
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+.kg-card-markdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.kg-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-full-content .kg-image {
+    max-width: 760px;
+}
+
+.post-full-content .kg-image--wide {
+    max-width: 1040px;
+}
+
+.post-full-content .kg-image--full {
+    max-width: 100vw;
+}
+
+.post-full-content .kg-image-card figcaption {
+    margin: -1.5em auto 3em;
+}
+
+.post-full-content .kg-image--full + figcaption {
+    max-width: 760px;
+}
+
+@media (max-width: 1040px) {
+    .post-full-content .kg-image--full {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 1130px) {
+    .post-full-content .kg-image--full + figcaption {
+        padding: 0 11vw;
+        max-width: 100vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-full-content .kg-image--full + figcaption {
+        padding: 0 4vw;
     }
 }
 
