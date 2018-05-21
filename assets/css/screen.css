@@ -20,6 +20,7 @@ production stylesheet in assets/built/screen.css
   7.4. Related Posts
   7.5. Floating Header
   7.6. Feature Post Template
+  7.7. Koenig
 8.  Author Template
 9.  Error Template
 10. Subscribe Overlay
@@ -239,8 +240,9 @@ body {
     margin: 0;
     padding: 0;
     color: var(--darkgrey);
-    font-size: 3.5rem;
+    font-size: 4.6rem;
     font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .tag-description {
@@ -249,10 +251,10 @@ body {
     margin: 8px 0 0 0;
     padding: 0;
     font-family: var(--serif);
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.5em;
     font-weight: 300;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.2px;
     opacity: 0.8;
 }
 
@@ -542,8 +544,7 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
 
 .site-section-title {
     margin: 0;
-    font-family: var(--serif);
-    font-size: 2.4rem;
+    font-size: 2.6rem;
 }
 
 .site-section-morelink {
@@ -1132,6 +1133,11 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
     font-family: var(--serif);
 }
 
+.post-card-excerpt p {
+    letter-spacing: normal;
+    line-height: 1.75em;
+}
+
 .post-card-meta {
     display: flex;
     justify-content: space-between;
@@ -1422,14 +1428,6 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
     display: none;
 }
 
-.kg-card-markdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 920px;
-    margin: 0 auto;
-}
-
 .post-full-content h1,
 .post-full-content h2,
 .post-full-content h3,
@@ -1507,7 +1505,8 @@ Usage (In Ghost editor):
 
 */
 
-.post-full-content img + br + small {
+.post-full-content img + br + small,
+.post-full-content .kg-image-card figcaption {
     display: block;
     margin-top: -3.4em;
     margin-bottom: 1.5em;
@@ -1890,7 +1889,6 @@ Usage (In Ghost edtior):
 .author-card-content p {
     margin: 0;
     color: var(--midgrey);
-    font-family: var(--serif);
     line-height: 1.5em;
 }
 
@@ -2588,6 +2586,81 @@ Usage (In Ghost edtior):
 @media (max-width: 650px) {
     .post-template.tag-hash-feature .post-full-content {
         margin-top: 0;
+    }
+}
+
+/* 7.7. Koenig Styles
+/* ---------------------------------------------------------- */
+
+
+/* Ghost 1.0 - .kg-card-markdown to be depricated */
+.kg-card-markdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.post-template .kg-card-markdown > p:first-child {
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+.kg-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.post-template .kg-post > p:first-child {
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+.post-full-content .kg-image {
+    max-width: 760px;
+}
+
+/* Preventing full-width image overlap with post image.  */
+.post-full-image + .post-full-content .kg-post *:first-child .kg-image {
+    width: 100%;
+}
+
+.post-full-content .kg-image--wide {
+    max-width: 1040px;
+}
+
+.post-full-content .kg-image--full {
+    max-width: 100vw;
+}
+
+.post-full-content .kg-image-card figcaption {
+    margin: -1.5em auto 3em;
+}
+
+.post-full-content .kg-image--full + figcaption {
+    max-width: 760px;
+}
+
+@media (max-width: 1040px) {
+    .post-full-content .kg-image--full {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 1130px) {
+    .post-full-content .kg-image--full + figcaption {
+        padding: 0 11vw;
+        max-width: 100vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-full-content .kg-image--full + figcaption {
+        padding: 0 4vw;
     }
 }
 
