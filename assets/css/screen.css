@@ -2629,11 +2629,11 @@ Usage (In Ghost edtior):
     width: 100%;
 }
 
-.post-full-content .kg-image--wide {
+.post-full-content .kg-image-wide {
     max-width: 1040px;
 }
 
-.post-full-content .kg-image--full {
+.post-full-content .kg-image-full {
     max-width: 100vw;
 }
 
@@ -2641,25 +2641,25 @@ Usage (In Ghost edtior):
     margin: -1.5em auto 3em;
 }
 
-.post-full-content .kg-image--full + figcaption {
+.post-full-content .kg-image-full + figcaption {
     max-width: 760px;
 }
 
 @media (max-width: 1040px) {
-    .post-full-content .kg-image--full {
+    .post-full-content .kg-image-full {
         width: 100vw;
     }
 }
 
 @media (max-width: 1130px) {
-    .post-full-content .kg-image--full + figcaption {
+    .post-full-content .kg-image-full + figcaption {
         padding: 0 11vw;
         max-width: 100vw;
     }
 }
 
 @media (max-width: 600px) {
-    .post-full-content .kg-image--full + figcaption {
+    .post-full-content .kg-image-full + figcaption {
         padding: 0 4vw;
     }
 }
