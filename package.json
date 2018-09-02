@@ -1,9 +1,9 @@
 {
   "name": "blog",
   "description": "The Ghost company blog theme which runs on blog.ghost.org and dev.ghost.org",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "engines": {
-    "ghost": ">=1.2.0"
+    "ghost": ">=2.0.0"
   },
   "license": "MIT",
   "scripts": {
@@ -24,7 +24,8 @@
   },
   "keywords": [
     "ghost",
-    "theme"
+    "theme",
+    "ghost-theme"
   ],
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "autoprefixer": "6.3.6",
     "cssnano": "3.7.1",
+    "gscan": "^2.0.0",
     "gulp": "3.9.1",
     "gulp-livereload": "3.8.1",
     "gulp-postcss": "6.1.1",

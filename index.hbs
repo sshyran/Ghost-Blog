@@ -26,7 +26,42 @@
                 <div class="post-feed highlight-feed-primary">
                     {{#get "posts" filter="featured:true" include="authors,tags" limit="1"}}
                     {{#foreach posts}}
-                        {{> "post-card"}}
+                        <article class="post-card {{post_class}}{{#unless feature_image}} no-image{{/unless}}">
+
+                            {{#if og_image}}
+                                <a class="post-card-image-link" href="{{url}}">
+                                    <div class="post-card-image" style="background-image: url({{og_image}})"></div>
+                                </a>
+                            {{else}}
+                                {{#if feature_image}}
+                                    <a class="post-card-image-link" href="{{url}}">
+                                        <div class="post-card-image" style="background-image: url({{feature_image}})"></div>
+                                    </a>
+                                {{/if}}
+                            {{/if}}
+
+                            <div class="post-card-content">
+
+                                <a class="post-card-content-link" href="{{url}}">
+                                    <header class="post-card-header">
+                                        {{#if primary_tag}}
+                                            <span class="post-card-tags">{{primary_tag.name}}</span>
+                                        {{/if}}
+                                        <h2 class="post-card-title">{{title}}</h2>
+                                    </header>
+                                    <div class="post-card-excerpt">
+                                        <p>{{excerpt words="33"}}</p>
+                                    </div>
+                                </a>
+
+                                <footer class="post-card-meta">
+                                    {{> "components/author-list"}}
+                                    <span class="reading-time">{{reading_time}}</span>
+                                </footer>
+
+                            </div>
+
+                        </article>
                     {{/foreach}}
                     {{/get}}
                     <aside>
