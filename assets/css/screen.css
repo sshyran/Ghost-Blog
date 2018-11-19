@@ -1511,8 +1511,6 @@ Usage (In Ghost editor):
 .post-full-content img + br + small,
 .post-full-content .kg-image-card figcaption {
     display: block;
-    margin-top: -3.4em;
-    margin-bottom: 1.5em;
     font-style: italic;
     font-family: var(--sans-serif);
     font-weight: 500;
