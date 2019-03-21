@@ -1145,36 +1145,6 @@ body:not(.gh-head-transparent) .highlight-feed .inner {
     padding: 0 25px 25px;
 }
 
-/* Featured Card - using #cover tag */
-.post-card.tag-hash-cover {
-    position: relative;
-    background-color: var(--darkgrey);
-}
-.post-card.tag-hash-cover .post-card-content-link {
-    padding-top: 225px;
-    color: #fff;
-    text-align: center;
-}
-.post-card.tag-hash-cover .post-card-title {
-    font-size: 3rem;
-}
-.post-card.tag-hash-cover:before {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(35deg, rgba(0,0,0,0.70) 0%,rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 50%);
-}
-.post-card.tag-hash-cover .post-card-tags,
-.post-card.tag-hash-cover .reading-time {
-    position: relative;
-    z-index: 100;
-    color: rgba(255,255,255,0.6);
-}
-
 .author-profile-image {
     display: block;
     width: 100%;
@@ -2856,4 +2826,23 @@ Usage (In Ghost edtior):
 
 .error-template .post-feed {
     padding-top: 0;
+}
+
+/* New Home 2019 */
+
+.home-wrap {
+    display: flex;
+    margin: 4vw 0;
+}
+
+.changelog {
+    flex: 1 1 auto;
+    padding: 30px;
+    border: 1px solid #e5eff5;
+    background: #fff;
+}
+
+.sidebar {
+    width: 300px;
+    margin: 0 0 0 30px;
 }
