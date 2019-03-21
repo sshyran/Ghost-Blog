@@ -2870,6 +2870,7 @@ Usage (In Ghost edtior):
 .changelog-item img {
     display: block;
     max-width: 100% !important;
+    margin: 0 0 1.5em;
 }
 
 .changelog-tag {
