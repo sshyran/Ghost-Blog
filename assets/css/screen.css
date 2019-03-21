@@ -2833,7 +2833,7 @@ Usage (In Ghost edtior):
 .home-wrap {
     flex: 0 0 auto;
     display: flex;
-    margin: 4vw 0;
+    margin-top: 4vw;
 }
 
 .changelog {
@@ -2939,4 +2939,22 @@ Usage (In Ghost edtior):
     flex: 0 0 300px;
     width: 300px;
     margin: 0 0 0 30px;
+}
+
+@media (max-width: 960px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .changelog-item {
+        flex-direction: column;
+        padding-top: 0;
+    }
+    .changelog-item-sidebar {
+        margin: 0 0 40px 0;
+        flex: 0 0 auto;
+        text-align-last: left;
+    }
 }
