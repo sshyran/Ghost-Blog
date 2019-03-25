@@ -26,7 +26,7 @@
                                         {{img_url feature_image size="xl"}} 2000w" sizes="(max-width: 1000px) 400px, 700px" src="{{img_url feature_image size="m"}}" alt="{{title}}"
                             />
                             <p>{{excerpt}}</p>
-                            <div class="readmore">Read the full post &raquo;</div>
+                            <a {{#if canonical_url}}href="{{canonical_url}}" target="_blank" rel="noopener" {{else}}href="{{url}}" {{/if}}><div class="readmore">Read the full post &raquo;</div></a>
                         {{else}}
                             {{content}}
                         {{/if}}
