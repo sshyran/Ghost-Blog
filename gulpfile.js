@@ -1,4 +1,4 @@
-const {series, watch, src, dest} = require('gulp');
+const {series, watch, src, dest, parallel} = require('gulp');
 const pump = require('pump');
 
 // gulp plugins and utils
@@ -28,6 +28,13 @@ const handleError = (done) => {
         return done(err);
     };
 };
+
+function hbs(done) {
+    pump([
+        src('*/**.hbs'),
+        livereload()
+    ], handleError(done));
+}
 
 function css(done) {
     var processors = [
@@ -71,7 +78,9 @@ function zipper(done) {
     ], handleError(done));
 }
 
-const watcher = () => watch('assets/css/**', css);
+const cssWatcher = () => watch('assets/css/**', css);
+const hbsWatcher = () => watch('**/*.hbs', hbs);
+const watcher = parallel(cssWatcher, hbsWatcher);
 const build = series(css, js);
 const dev = series(build, serve, watcher);
 
