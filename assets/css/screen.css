@@ -33,6 +33,7 @@ production stylesheet in assets/built/screen.css
 /* ---------------------------------------------------------- */
 @import "global.css";
 @import "app.css";
+@import "prism.css";
 
 body {
     background: #f4f8fb;
